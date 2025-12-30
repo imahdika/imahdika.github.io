@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariah Friederichs - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #e8e8e8;
+            color: #333;
+        }
+
+
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #e8e8e8;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero_section {
+            padding: 60px 80px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .greeting_text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .hero_name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+
+        .hero_content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .profile_picture {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile_picture:hover {
+            transform: scale(1.05);
+        }
+
+        .hero_text_section {
+            flex: 1;
+        }
+
+        .hero_description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hero_subtext {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cta_button {
+            background-color: #000;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 25px;
+            border: none;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta_button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Projects Section */
+        .projects_section {
+            padding: 40px 80px 80px 80px;
+        }
+
+        .projects_title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+
+        .projects_grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project_card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project_image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project_info {
+            padding: 20px;
+        }
+
+        .project_name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .project_tags {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer_section {
+            padding: 40px 80px;
+            border-top: 1px solid #d0d0d0;
+        }
+
+        .footer_name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .footer_location {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .footer_email {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .footer_copyright {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Contact Form Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal_content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close_button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .close_button:hover {
+            color: #000;
+        }
+
+        .form_title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .form_group {
+            margin-bottom: 20px;
+        }
+
+        .form_label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form_input,
+        .form_textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form_textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .robot_check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .robot_checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .submit_button {
+            background-color: #000;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 25px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit_button:hover {
+            background-color: #333;
+        }
+
+        .submit_button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .hero_content {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .projects_grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero_section,
+            .projects_section,
+            .footer_section {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero_section">
+            <div class="greeting_text" id="greeting_text"></div>
+            <h1 class="hero_name">Mariah Friederichs</h1>
+            
+            <div class="hero_content">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop" 
+                     alt="Profile Picture" 
+                     class="profile_picture">
+                
+                <div class="hero_text_section">
+                    <p class="hero_description">
+                        As a brand strategist, social media manager, and content creator with over five years of experience, I create impactful campaigns that drive business growth.
+                    </p>
+                    <p class="hero_subtext">
+                        Check out a few of my favorite projects below!
+                    </p>
+                    <button class="cta_button" onclick="openContactForm()">LET'S CONNECT</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects_section">
+            <h2 class="projects_title">Top projects</h2>
+            
+            <div class="projects_grid">
+                <!-- Project 1 -->
+                <div class="project_card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=500&fit=crop" 
+                         alt="Miami Cocktail Co." 
+                         class="project_image project1_image">
+                    <div class="project_info">
+                        <h3 class="project_name project1_name">Miami Cocktail Co.</h3>
+                        <p class="project_tags project1_text">Social Media Strategy • Community Management • Content Creation</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project_card">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=500&fit=crop" 
+                         alt="Woxer Fashion Brand" 
+                         class="project_image project2_image">
+                    <div class="project_info">
+                        <h3 class="project_name project2_name">Woxer — Fashion Brand</h3>
+                        <p class="project_tags project2_text">Social Media Strategy • Community Management • Influencer Management • Content Creation • Project Management</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project_card">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=500&fit=crop" 
+                         alt="Atlanta Food & Wine Festival" 
+                         class="project_image project3_image">
+                    <div class="project_info">
+                        <h3 class="project_name project3_name">Atlanta Food & Wine Festival</h3>
+                        <p class="project_tags project3_text">Social Media • Brand Strategy • Copywriting • Email Marketing • Influencer Management • Content Creation</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project_card">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" 
+                         alt="Pebble Beach Food & Wine" 
+                         class="project_image project4_image">
+                    <div class="project_info">
+                        <h3 class="project_name project4_name">Pebble Beach Food & Wine</h3>
+                        <p class="project_tags project4_text">Social Media • Brand Strategy • Copywriting • Content Creation • Email Marketing</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project_card">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=500&fit=crop" 
+                         alt="Heritage Fire Tour" 
+                         class="project_image project5_image">
+                    <div class="project_info">
+                        <h3 class="project_name project5_name">Heritage Fire Tour</h3>
+                        <p class="project_tags project5_text">Social Media • Brand Strategy • Copywriting • Email Marketing • Influencer Management • Content Creation</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project_card">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=500&fit=crop" 
+                         alt="Taste of the Upper West Side" 
+                         class="project_image project6_image">
+                    <div class="project_info">
+                        <h3 class="project_name project6_name">Taste of the Upper West Side</h3>
+                        <p class="project_tags project6_text">Social Media • Brand Strategy • Email Marketing • Copywriting • Content Creation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer_section">
+            <h3 class="footer_name">Mariah Friederichs</h3>
+            <p class="footer_location">South Florida</p>
+            <p class="footer_email">mariahfriederichs@gmail.com</p>
+            <p class="footer_copyright">© Mariah Friederichs, 2024</p>
+        </footer>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contact_modal" class="modal">
+        <div class="modal_content">
+            <span class="close_button" onclick="closeContactForm()">&times;</span>
+            <h2 class="form_title">Let's Connect!</h2>
+            <form id="contact_form" onsubmit="handleFormSubmit(event)">
+                <div class="form_group">
+                    <label class="form_label" for="contact_name">Name</label>
+                    <input type="text" id="contact_name" class="form_input" required>
+                </div>
+                
+                <div class="form_group">
+                    <label class="form_label" for="contact_email">Email</label>
+                    <input type="email" id="contact_email" class="form_input" required>
+                </div>
+                
+                <div class="form_group">
+                    <label class="form_label" for="contact_message">Message</label>
+                    <textarea id="contact_message" class="form_textarea" required></textarea>
+                </div>
+                
+                <div class="robot_check">
+                    <input type="checkbox" id="robot_checkbox" class="robot_checkbox" required>
+                    <label for="robot_checkbox">I'm not a robot</label>
+                </div>
+                
+                <button type="submit" class="submit_button" id="submit_button">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Greeting based on time of day and user's timezone
+        function setGreeting() {
+            const hour = new Date().getHours();
+            let greeting;
+            
+            if (hour >= 5 && hour < 12) {
+                greeting = "Good morning! ☀️";
+            } else if (hour >= 12 && hour < 17) {
+                greeting = "Good afternoon! 👋";
+            } else if (hour >= 17 && hour < 22) {
+                greeting = "Good evening! 🌆";
+            } else {
+                greeting = "Good night! 🌙";
+            }
+            
+            document.getElementById('greeting_text').textContent = greeting;
+        }
+
+        // Call greeting function on page load
+        setGreeting();
+
+        // Contact Form Functions
+        function openContactForm() {
+            document.getElementById('contact_modal').style.display = 'block';
+        }
+
+        function closeContactForm() {
+            document.getElementById('contact_modal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('contact_modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('contact_name').value;
+            const email = document.getElementById('contact_email').value;
+            const message = document.getElementById('contact_message').value;
+            const robotCheck = document.getElementById('robot_checkbox').checked;
+            
+            if (!robotCheck) {
+                alert('Please verify that you are not a robot.');
+                return;
+            }
+            
+            // Create mailto link with form data
+            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const mailtoLink = `mailto:mariahfriederichs@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Reset form and close modal
+            document.getElementById('contact_form').reset();
+            closeContactForm();
+            
+            alert('Thank you! Your email client will open to send the message.');
+        }
+    </script>
+</body>
+</html>
