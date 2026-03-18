@@ -1,527 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahdi Hasan - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahdi K — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #e8e8e8;
-            color: #333;
-        }
+    :root {
+      --bg: #f2f0eb;
+      --ink: #1a1816;
+      --muted: #8a8580;
+      --border: #d8d5cf;
+      --white: #ffffff;
+      --radius: 14px;
+    }
 
+    html { scroll-behavior: smooth; }
 
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #e8e8e8;
-            min-height: 100vh;
-        }
+    a { color: inherit; text-decoration: none; }
 
-        /* Hero Section */
-        .hero_section {
-            padding: 60px 80px;
-            animation: fadeIn 1s ease-in;
-        }
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 52px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px; letter-spacing: -0.3px;
+    }
 
-        .greeting_text {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
-        }
+    .nav-links {
+      display: flex; gap: 32px; align-items: center;
+    }
 
-        .hero_name {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 40px;
-            color: #1a1a1a;
-        }
+    .nav-links a {
+      font-size: 13px; color: var(--muted);
+      letter-spacing: 0.02em; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
 
-        .hero_content {
-            display: flex;
-            align-items: center;
-            gap: 80px;
-        }
+    .nav-cv {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+      background: var(--ink); color: var(--white) !important;
+      padding: 9px 20px; border-radius: 40px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cv:hover { background: #3a3733 !important; transform: translateY(-1px); }
 
-        .profile_picture {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+    /* HERO */
+    .hero {
+      padding: 86px 52px 64px;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .profile_picture:hover {
-            transform: scale(1.05);
-        }
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 22px;
+      opacity: 0; animation: rise 0.7s 0.1s forwards;
+    }
 
-        .hero_text_section {
-            flex: 1;
-        }
+    .hero-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(56px, 9vw, 104px);
+      line-height: 1.0; letter-spacing: -2.5px; color: var(--ink);
+      opacity: 0; animation: rise 0.7s 0.2s forwards;
+    }
+    .hero-headline em { font-style: italic; color: var(--muted); }
 
-        .hero_description {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 20px;
-        }
+    .hero-sub {
+      margin-top: 34px; max-width: 500px;
+      font-size: 16px; color: var(--muted); font-weight: 300; line-height: 1.7;
+      opacity: 0; animation: rise 0.7s 0.35s forwards;
+    }
 
-        .hero_subtext {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 30px;
-        }
+    .hero-actions {
+      margin-top: 38px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+      opacity: 0; animation: rise 0.7s 0.5s forwards;
+    }
 
-        .cta_button {
-            background-color: #000;
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 25px;
-            border: none;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: var(--white);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 13px 26px; border-radius: 40px; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #3a3733; transform: translateY(-1px); }
 
-        .cta_button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink); border: 1px solid var(--border);
+      padding: 12px 24px; border-radius: 40px;
+      transition: border-color 0.2s, background 0.2s; text-decoration: none;
+    }
+    .btn-outline:hover { border-color: var(--ink); background: rgba(26,24,22,0.04); }
 
-        /* Projects Section */
-        .projects_section {
-            padding: 40px 80px 80px 80px;
-        }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--ink); }
 
-        .projects_title {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 40px;
-            color: #1a1a1a;
-        }
+    /* PROJECTS GRID */
+    .projects { padding: 72px 52px 88px; }
 
-        .projects_grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
+    .section-header {
+      display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 44px;
+    }
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    }
+    .section-count { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
 
-        .project_card {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* 12-column editorial grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+    }
 
-        .project_card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
+    .proj-card:nth-child(1) { grid-column: span 7; }
+    .proj-card:nth-child(2) { grid-column: span 5; }
+    .proj-card:nth-child(3) { grid-column: span 5; }
+    .proj-card:nth-child(4) { grid-column: span 7; }
+    .proj-card:nth-child(5) { grid-column: span 6; }
+    .proj-card:nth-child(6) { grid-column: span 6; }
 
-        .project_image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+    .proj-card {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      cursor: pointer; background: #e4e1da;
+    }
 
-        .project_info {
-            padding: 20px;
-        }
+    /* Varied aspect ratios per slot */
+    .proj-card:nth-child(1) .proj-img-wrap { aspect-ratio: 16/10; }
+    .proj-card:nth-child(2) .proj-img-wrap { aspect-ratio: 3/4; }
+    .proj-card:nth-child(3) .proj-img-wrap { aspect-ratio: 3/4; }
+    .proj-card:nth-child(4) .proj-img-wrap { aspect-ratio: 16/9; }
+    .proj-card:nth-child(5) .proj-img-wrap { aspect-ratio: 4/3; }
+    .proj-card:nth-child(6) .proj-img-wrap { aspect-ratio: 4/3; }
 
-        .project_name {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
+    .proj-img-wrap {
+      width: 100%; overflow: hidden; position: relative;
+    }
 
-        .project_tags {
-            font-size: 12px;
-            color: #666;
-            line-height: 1.5;
-        }
+    .proj-img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .proj-card:hover .proj-img { transform: scale(1.04); }
 
-        /* Footer */
-        .footer_section {
-            padding: 40px 80px;
-            border-top: 1px solid #d0d0d0;
-        }
+    /* Dashed placeholder shown when no image is set */
+    .proj-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      background: #eae7e0;
+      border: 2px dashed var(--border);
+      color: var(--muted); pointer-events: none;
+    }
+    .proj-placeholder svg { opacity: 0.35; }
+    .proj-placeholder span {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45;
+    }
 
-        .footer_name {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
+    /* Hide placeholder once a real image src is provided */
+    .proj-img-wrap img[src]:not([src=""]) + .proj-placeholder { display: none; }
 
-        .footer_location {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 4px;
-        }
+    /* Hover overlay */
+    .proj-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 32px 22px 20px;
+      background: linear-gradient(to top, rgba(26,24,22,0.75) 0%, transparent 100%);
+      opacity: 0; transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .proj-card:hover .proj-overlay { opacity: 1; transform: translateY(0); }
 
-        .footer_email {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 16px;
-        }
+    .proj-overlay-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px; color: #fff; letter-spacing: -0.3px; line-height: 1.2;
+    }
+    .proj-overlay-tags {
+      font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; font-weight: 300;
+    }
 
-        .footer_copyright {
-            font-size: 12px;
-            color: #999;
-        }
+    /* Label below card */
+    .proj-info { padding: 15px 2px 6px; }
+    .proj-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px; letter-spacing: -0.3px; color: var(--ink);
+    }
+    .proj-meta {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 4px;
+    }
+    .proj-tags { font-size: 11px; color: var(--muted); font-weight: 300; }
+    .proj-year  { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
 
-        /* Contact Form Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s ease;
-        }
+    /* ABOUT */
+    .about-strip {
+      padding: 72px 52px;
+      border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 320px; gap: 80px; align-items: start;
+    }
+    .about-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px,3.5vw,40px); line-height: 1.25; letter-spacing: -0.8px; margin-bottom: 22px;
+    }
+    .about-text p { color: var(--muted); font-weight: 300; line-height: 1.8; font-size: 15px; margin-bottom: 14px; }
+    .about-portrait { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); display: block; }
 
-        .modal_content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 40px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            animation: slideIn 0.3s ease;
-        }
+    /* FOOTER */
+    footer { padding: 52px; border-top: 1px solid var(--border); }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 44px; }
+    .footer-logo { font-family: 'DM Serif Display', serif; font-size: 24px; letter-spacing: -0.5px; }
+    .footer-nav { display: flex; gap: 64px; }
+    .footer-col h4 {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--ink); margin-bottom: 10px; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--muted); }
+    .footer-arrow { font-size: 11px; opacity: 0.4; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 28px; border-top: 1px solid var(--border);
+    }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+    .footer-email { font-size: 12px; color: var(--muted); transition: color 0.2s; }
+    .footer-email:hover { color: var(--ink); }
 
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(26,24,22,0.55); z-index: 999;
+      backdrop-filter: blur(5px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; animation: fade-in 0.25s ease; }
+    .modal-box {
+      background: var(--white); border-radius: 18px; padding: 48px;
+      width: 90%; max-width: 460px; animation: rise 0.3s ease;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
+    .modal-title { font-family: 'DM Serif Display', serif; font-size: 28px; letter-spacing: -0.5px; }
+    .modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 22px; line-height: 1; transition: color 0.2s; }
+    .modal-close:hover { color: var(--ink); }
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
+      background: var(--bg); outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--ink); }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .robot-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; font-size: 13px; color: var(--muted); }
+    .robot-row input { accent-color: var(--ink); }
+    .submit-btn {
+      width: 100%; background: var(--ink); color: var(--white); border: none; border-radius: 8px; padding: 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .submit-btn:hover { background: #3a3733; }
 
-        .close_button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            line-height: 20px;
-        }
+    /* ANIMATIONS */
+    @keyframes rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
 
-        .close_button:hover {
-            color: #000;
-        }
-
-        .form_title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
-
-        .form_group {
-            margin-bottom: 20px;
-        }
-
-        .form_label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .form_input,
-        .form_textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: inherit;
-        }
-
-        .form_textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .robot_check {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .robot_checkbox {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .submit_button {
-            background-color: #000;
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 25px;
-            border: none;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        .submit_button:hover {
-            background-color: #333;
-        }
-
-        .submit_button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        @media (max-width: 768px) {
-            .hero_content {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .projects_grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero_section,
-            .projects_section,
-            .footer_section {
-                padding-left: 40px;
-                padding-right: 40px;
-            }
-        }
-    </style>
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .proj-card:nth-child(1), .proj-card:nth-child(4) { grid-column: span 12; }
+      .proj-card:nth-child(2), .proj-card:nth-child(3),
+      .proj-card:nth-child(5), .proj-card:nth-child(6) { grid-column: span 6; }
+      .proj-card:nth-child(n) .proj-img-wrap { aspect-ratio: 4/3; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 16px 24px; }
+      .nav-cv span { display: none; }
+      .hero, .projects, .about-strip, footer { padding-left: 24px; padding-right: 24px; }
+      .hero-headline { letter-spacing: -1.5px; }
+      .about-strip { grid-template-columns: 1fr; gap: 36px; }
+      .footer-top { flex-direction: column; gap: 36px; }
+      .footer-nav { gap: 36px; }
+      .proj-card:nth-child(n) { grid-column: span 12; }
+      .project-grid { gap: 14px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero_section">
-            <div class="greeting_text" id="greeting_text"></div>
-            <h1 class="hero_name">Mahdi Hasan</h1>
-            
-            <div class="hero_content">
-                <img src="<img src="https://raw.githubusercontent.com/imahdika/imahdika.github.io/bd072157ce23192241ca41e294e7e2dc94f02962/pfp.png.png" 
-                     alt="Profile Picture" 
-                     class="profile_picture">
-                
-                <div class="hero_text_section">
-                    <p class="hero_description">
-                        As a brand strategist, social media manager, and content creator with over five years of experience, I create impactful campaigns that drive business growth.
-                    </p>
-                    <p class="hero_subtext">
-                        Check out a few of my favorite projects below!
-                    </p>
-                    <button class="cta_button" onclick="openContactForm()">LET'S CONNECT</button>
-                </div>
-            </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section class="projects_section">
-            <h2 class="projects_title">Top projects</h2>
-            
-            <div class="projects_grid">
-                <!-- Project 1 -->
-                <div class="project_card">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=500&fit=crop" 
-                         alt="Miami Cocktail Co." 
-                         class="project_image project1_image">
-                    <div class="project_info">
-                        <h3 class="project_name project1_name">Miami Cocktail Co.</h3>
-                        <p class="project_tags project1_text">Social Media Strategy • Community Management • Content Creation</p>
-                    </div>
-                </div>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Mahdi K</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Work</a>
+      <a href="#" onclick="openModal(); return false;">Contact</a>
+      <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="nav-cv">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download CV</span>
+      </a>
+    </div>
+  </nav>
 
-                <!-- Project 2 -->
-                <div class="project_card">
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=500&fit=crop" 
-                         alt="Woxer Fashion Brand" 
-                         class="project_image project2_image">
-                    <div class="project_info">
-                        <h3 class="project_name project2_name">Woxer — Fashion Brand</h3>
-                        <p class="project_tags project2_text">Social Media Strategy • Community Management • Influencer Management • Content Creation • Project Management</p>
-                    </div>
-                </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow" id="greeting-text">Welcome</div>
+    <h1 class="hero-headline">Mahdi <em>K</em></h1>
+    <p class="hero-sub">Brand strategist, social media manager, and content creator with over five years of experience crafting impactful campaigns that drive real business growth.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openModal()">Let's Connect ↗</button>
+      <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="btn-outline">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+      </a>
+      <a href="#projects" class="btn-ghost">View Work ↓</a>
+    </div>
+  </section>
 
-                <!-- Project 3 -->
-                <div class="project_card">
-                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=500&fit=crop" 
-                         alt="Atlanta Food & Wine Festival" 
-                         class="project_image project3_image">
-                    <div class="project_info">
-                        <h3 class="project_name project3_name">Atlanta Food & Wine Festival</h3>
-                        <p class="project_tags project3_text">Social Media • Brand Strategy • Copywriting • Email Marketing • Influencer Management • Content Creation</p>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project_card">
-                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=500&fit=crop" 
-                         alt="Pebble Beach Food & Wine" 
-                         class="project_image project4_image">
-                    <div class="project_info">
-                        <h3 class="project_name project4_name">Pebble Beach Food & Wine</h3>
-                        <p class="project_tags project4_text">Social Media • Brand Strategy • Copywriting • Content Creation • Email Marketing</p>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project_card">
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=500&fit=crop" 
-                         alt="Heritage Fire Tour" 
-                         class="project_image project5_image">
-                    <div class="project_info">
-                        <h3 class="project_name project5_name">Heritage Fire Tour</h3>
-                        <p class="project_tags project5_text">Social Media • Brand Strategy • Copywriting • Email Marketing • Influencer Management • Content Creation</p>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project_card">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=500&fit=crop" 
-                         alt="Taste of the Upper West Side" 
-                         class="project_image project6_image">
-                    <div class="project_info">
-                        <h3 class="project_name project6_name">Taste of the Upper West Side</h3>
-                        <p class="project_tags project6_text">Social Media • Brand Strategy • Email Marketing • Copywriting • Content Creation</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer_section">
-            <h3 class="footer_name">Mahdi Hasan</h3>
-            <p class="footer_location">South Florida</p>
-            <p class="footer_email"> </p>
-            <p class="footer_copyright">© Mahdi Hasan, 2024</p>
-        </footer>
+  <!-- PROJECTS GRID -->
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <p class="section-label">Selected Projects</p>
+      <span class="section-count">06 Works</span>
     </div>
 
-    <!-- Contact Form Modal -->
-    <div id="contact_modal" class="modal">
-        <div class="modal_content">
-            <span class="close_button" onclick="closeContactForm()">&times;</span>
-            <h2 class="form_title">Let's Connect!</h2>
-            <form id="contact_form" onsubmit="handleFormSubmit(event)">
-                <div class="form_group">
-                    <label class="form_label" for="contact_name">Name</label>
-                    <input type="text" id="contact_name" class="form_input" required>
-                </div>
-                
-                <div class="form_group">
-                    <label class="form_label" for="contact_email">Email</label>
-                    <input type="email" id="contact_email" class="form_input" required>
-                </div>
-                
-                <div class="form_group">
-                    <label class="form_label" for="contact_message">Message</label>
-                    <textarea id="contact_message" class="form_textarea" required></textarea>
-                </div>
-                
-                <div class="robot_check">
-                    <input type="checkbox" id="robot_checkbox" class="robot_checkbox" required>
-                    <label for="robot_checkbox">I'm not a robot</label>
-                </div>
-                
-                <button type="submit" class="submit_button" id="submit_button">Send Message</button>
-            </form>
+    <div class="project-grid">
+
+      <!-- 1 — large left (16:10) -->
+      <div class="proj-card">
+        <div class="proj-img-wrap">
+          <!-- TO ADD IMAGE: replace src="" with your image path, e.g. src="images/miami-cocktail.jpg" -->
+          <img src="" alt="Miami Cocktail Co." class="proj-img">
+          <div class="proj-placeholder">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Add Image</span>
+          </div>
         </div>
+        <div class="proj-overlay">
+          <div class="proj-overlay-name">Miami Cocktail Co.</div>
+          <div class="proj-overlay-tags">Social Media · Content Creation</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-title">Miami Cocktail Co.</div>
+          <div class="proj-meta">
+            <span class="proj-tags">Social Media · Content</span>
+            <span class="proj-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 — tall right (3:4) -->
+      <div class="proj-card">
+        <div class="proj-img-wrap">
+          <img src="" alt="Woxer Fashion Brand" class="proj-img">
+          <div class="proj-placeholder">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Add Image</span>
+          </div>
+        </div>
+        <div class="proj-overlay">
+          <div class="proj-overlay-name">Woxer — Fashion Brand</div>
+          <div class="proj-overlay-tags">Strategy · Influencer</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-title">Woxer — Fashion Brand</div>
+          <div class="proj-meta">
+            <span class="proj-tags">Strategy · Influencer</span>
+            <span class="proj-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 — tall left (3:4) -->
+      <div class="proj-card">
+        <div class="proj-img-wrap">
+          <img src="" alt="Atlanta Food & Wine Festival" class="proj-img">
+          <div class="proj-placeholder">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Add Image</span>
+          </div>
+        </div>
+        <div class="proj-overlay">
+          <div class="proj-overlay-name">Atlanta Food & Wine</div>
+          <div class="proj-overlay-tags">Brand · Email · Copywriting</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-title">Atlanta Food & Wine Festival</div>
+          <div class="proj-meta">
+            <span class="proj-tags">Brand · Email · Copy</span>
+            <span class="proj-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 — large right (16:9) -->
+      <div class="proj-card">
+        <div class="proj-img-wrap">
+          <img src="" alt="Pebble Beach Food & Wine" class="proj-img">
+          <div class="proj-placeholder">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Add Image</span>
+          </div>
+        </div>
+        <div class="proj-overlay">
+          <div class="proj-overlay-name">Pebble Beach Food & Wine</div>
+          <div class="proj-overlay-tags">Brand · Content · Email</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-title">Pebble Beach Food & Wine</div>
+          <div class="proj-meta">
+            <span class="proj-tags">Brand · Content · Email</span>
+            <span class="proj-year">2022</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 — half width (4:3) -->
+      <div class="proj-card">
+        <div class="proj-img-wrap">
+          <img src="" alt="Heritage Fire Tour" class="proj-img">
+          <div class="proj-placeholder">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Add Image</span>
+          </div>
+        </div>
+        <div class="proj-overlay">
+          <div class="proj-overlay-name">Heritage Fire Tour</div>
+          <div class="proj-overlay-tags">Social Media · Strategy</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-title">Heritage Fire Tour</div>
+          <div class="proj-meta">
+            <span class="proj-tags">Social Media · Strategy</span>
+            <span class="proj-year">2022</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 — half width (4:3) -->
+      <div class="proj-card">
+        <div class="proj-img-wrap">
+          <img src="" alt="Taste of the Upper West Side" class="proj-img">
+          <div class="proj-placeholder">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Add Image</span>
+          </div>
+        </div>
+        <div class="proj-overlay">
+          <div class="proj-overlay-name">Taste of the Upper West Side</div>
+          <div class="proj-overlay-tags">Brand · Email · Content</div>
+        </div>
+        <div class="proj-info">
+          <div class="proj-title">Taste of the Upper West Side</div>
+          <div class="proj-meta">
+            <span class="proj-tags">Brand · Email · Content</span>
+            <span class="proj-year">2021</span>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <script>
-        // Greeting based on time of day and user's timezone
-        function setGreeting() {
-            const hour = new Date().getHours();
-            let greeting;
-            
-            if (hour >= 5 && hour < 12) {
-                greeting = "Good morning! ☀️";
-            } else if (hour >= 12 && hour < 17) {
-                greeting = "Good afternoon! 👋";
-            } else if (hour >= 17 && hour < 22) {
-                greeting = "Good evening! 🌆";
-            } else {
-                greeting = "Good night! 🌙";
-            }
-            
-            document.getElementById('greeting_text').textContent = greeting;
-        }
+  <!-- ABOUT -->
+  <section class="about-strip" id="about">
+    <div class="about-text">
+      <h2>Hi, I'm Mahdi K — a brand strategist and content creator based in South Florida.</h2>
+      <p>With over five years of experience, I blend strategic thinking with creative execution to build brands that resonate. I specialize in social media strategy, community management, influencer partnerships, and campaigns that move the needle.</p>
+      <p>Always open to new ideas and collabs — feel free to reach out if you'd like to work together.</p>
+      <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+        <button class="btn-primary" onclick="openModal()">Get in Touch ↗</button>
+        <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="btn-outline">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+      </div>
+    </div>
+    <img
+      src="https://raw.githubusercontent.com/imahdika/imahdika.github.io/bd072157ce23192241ca41e294e7e2dc94f02962/pfp.png.png"
+      alt="Portrait of Mahdi K"
+      class="about-portrait"
+      onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=680&h=850&fit=crop&crop=face'"
+    >
+  </section>
 
-        // Call greeting function on page load
-        setGreeting();
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">Mahdi K</div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <a href="#">Home <span class="footer-arrow">↗</span></a>
+          <a href="#projects">Work <span class="footer-arrow">↗</span></a>
+          <a href="#about">About <span class="footer-arrow">↗</span></a>
+          <a href="Mahdi_K_CV.pdf" download>CV <span class="footer-arrow">↓</span></a>
+        </div>
+        <div class="footer-col">
+          <h4>Social</h4>
+          <a href="https://instagram.com" target="_blank">Instagram <span class="footer-arrow">↗</span></a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn <span class="footer-arrow">↗</span></a>
+          <a href="https://twitter.com" target="_blank">Twitter (X) <span class="footer-arrow">↗</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">©2025 Mahdi K · South Florida</span>
+      <a href="mailto:mahdikhalil55@gmail.com" class="footer-email">mahdikhalil55@gmail.com</a>
+    </div>
+  </footer>
 
-        // Contact Form Functions
-        function openContactForm() {
-            document.getElementById('contact_modal').style.display = 'block';
-        }
+  <!-- CONTACT MODAL -->
+  <div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title">Let's Connect</h2>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="c-name">Name</label>
+        <input type="text" id="c-name" class="form-input" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="c-email">Email</label>
+        <input type="email" id="c-email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="c-msg">Message</label>
+        <textarea id="c-msg" class="form-textarea" placeholder="Tell me about your project…"></textarea>
+      </div>
+      <div class="robot-row">
+        <input type="checkbox" id="robot-check">
+        <label for="robot-check">I'm not a robot</label>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
+    </div>
+  </div>
 
-        function closeContactForm() {
-            document.getElementById('contact_modal').style.display = 'none';
-        }
+  <script>
+    const hour = new Date().getHours();
+    const greetings = ['Good night ✦', 'Good morning ☀️', 'Good afternoon 👋', 'Good evening 🌆'];
+    const idx = hour < 5 ? 0 : hour < 12 ? 1 : hour < 17 ? 2 : hour < 22 ? 3 : 0;
+    document.getElementById('greeting-text').textContent = greetings[idx];
 
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('contact_modal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
+    function openModal() {
+      document.getElementById('modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('modal')) closeModal();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-        // Handle form submission
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('contact_name').value;
-            const email = document.getElementById('contact_email').value;
-            const message = document.getElementById('contact_message').value;
-            const robotCheck = document.getElementById('robot_checkbox').checked;
-            
-            if (!robotCheck) {
-                alert('Please verify that you are not a robot.');
-                return;
-            }
-            
-            // Create mailto link with form data
-            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-            const mailtoLink = `mailto:mahdikhalil55@gmail.com?subject=${subject}&body=${body}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Reset form and close modal
-            document.getElementById('contact_form').reset();
-            closeContactForm();
-            
-            alert('Thank you! Your email client will open to send the message.');
-        }
-    </script>
+    function handleSubmit() {
+      const name  = document.getElementById('c-name').value.trim();
+      const email = document.getElementById('c-email').value.trim();
+      const msg   = document.getElementById('c-msg').value.trim();
+      const robot = document.getElementById('robot-check').checked;
+      if (!name || !email || !msg) return alert('Please fill in all fields.');
+      if (!robot) return alert("Please verify you're not a robot.");
+      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+      const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+      window.location.href = `mailto:mahdikhalil55@gmail.com?subject=${subject}&body=${body}`;
+      closeModal();
+    }
+  </script>
 </body>
 </html>
