@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahdi K — Portfolio</title>
+  <title>Mahdi Khalil — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -285,6 +285,85 @@
     }
     .submit-btn:hover { background: #3a3733; }
 
+    /* THOUGHT HEADLINE SECTION */
+    .thought-section {
+      padding: 72px 52px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .thought-inner {
+      display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+    }
+    .thought-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: 1.1; letter-spacing: -1.5px; color: var(--ink);
+    }
+    .thought-headline em { font-style: italic; color: var(--muted); }
+    .rocket-wrap {
+      display: inline-flex; align-items: center; cursor: default; flex-shrink: 0;
+    }
+    .rocket-svg {
+      width: clamp(40px, 5vw, 64px);
+      height: clamp(40px, 5vw, 64px);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      transform-origin: center center;
+    }
+    .rocket-wrap:hover .rocket-svg {
+      transform: translate(6px, -6px) rotate(-10deg) scale(1.12);
+    }
+    .rocket-wrap:hover .rocket-flame {
+      opacity: 1;
+    }
+    .rocket-flame {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    /* LOGO TICKER */
+    .logo-ticker-section {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .ticker-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); padding: 0 52px; margin-bottom: 28px;
+    }
+    .ticker-track {
+      display: flex; gap: 0;
+      width: max-content;
+      animation: ticker-scroll 30s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-set {
+      display: flex; align-items: center; gap: 0;
+    }
+    .ticker-item {
+      display: flex; align-items: center; gap: 11px;
+      padding: 0 44px;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ticker-item:last-child { border-right: none; }
+    .ticker-logo-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ticker-logo-icon svg { width: 100%; height: 100%; }
+    .ticker-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px; letter-spacing: -0.3px; color: var(--ink);
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .ticker-item:hover .ticker-name { opacity: 1; }
+
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     /* ANIMATIONS */
     @keyframes rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
@@ -306,6 +385,9 @@
       .footer-nav { gap: 36px; }
       .proj-card:nth-child(n) { grid-column: span 12; }
       .project-grid { gap: 14px; }
+      .thought-section { padding: 52px 24px 48px; }
+      .ticker-label { padding: 0 24px; }
+      .ticker-item { padding: 0 28px; }
     }
   </style>
 </head>
@@ -313,10 +395,10 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">Mahdi K</a>
+    <a href="#" class="nav-logo">Mahdi Khalil</a>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#projects">Work</a>
+      <a href="#projects">Projects</a>
       <a href="#" onclick="openModal(); return false;">Contact</a>
       <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="nav-cv">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -329,7 +411,7 @@
   <section class="hero">
     <div class="hero-eyebrow" id="greeting-text">Welcome</div>
     <h1 class="hero-headline">Mahdi <em>K</em></h1>
-    <p class="hero-sub">Marketing SpecialistBrand strategist, social media manager, and content creator with over five years of experience crafting impactful campaigns that drive real business growth.</p>
+    <p class="hero-sub"> <bi> Marketing Specialist </bi> <, Brand strategist, social media manager, and content creator with over five years of experience crafting impactful campaigns that drive real business growth.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="openModal()">Let's Connect ↗</button>
       <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="btn-outline">
@@ -337,6 +419,142 @@
         Download CV
       </a>
       <a href="#projects" class="btn-ghost">View Work ↓</a>
+    </div>
+  </section>
+
+  <!-- THOUGHT HEADLINE -->
+  <section class="thought-section">
+    <div class="thought-inner">
+      <h2 class="thought-headline">Implementing thoughts<br>into <em>reality</em></h2>
+      <span class="rocket-wrap" aria-hidden="true">
+        <svg class="rocket-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rocket body -->
+          <path d="M32 6 C20 6 14 22 14 34 L18 38 L46 38 L50 34 C50 22 44 6 32 6 Z" fill="#1a1816"/>
+          <!-- Nose tip -->
+          <path d="M32 6 C28 6 24 12 22 18 L42 18 C40 12 36 6 32 6 Z" fill="#3a3733"/>
+          <!-- Window -->
+          <circle cx="32" cy="26" r="6" fill="#f2f0eb" stroke="#1a1816" stroke-width="1.5"/>
+          <circle cx="32" cy="26" r="3.5" fill="#d8d5cf"/>
+          <!-- Left fin -->
+          <path d="M18 38 L10 50 L22 44 Z" fill="#1a1816"/>
+          <!-- Right fin -->
+          <path d="M46 38 L54 50 L42 44 Z" fill="#1a1816"/>
+          <!-- Bottom nozzle -->
+          <rect x="26" y="38" width="12" height="6" rx="2" fill="#3a3733"/>
+          <!-- Flame group -->
+          <g class="rocket-flame">
+            <path d="M28 44 C26 52 24 56 32 60 C40 56 38 52 36 44 Z" fill="#ff6b2b" opacity="0.9"/>
+            <path d="M30 44 C29 50 28 54 32 58 C36 54 35 50 34 44 Z" fill="#ffb347" opacity="0.85"/>
+            <path d="M31 44 C30.5 49 30 52 32 55 C34 52 33.5 49 33 44 Z" fill="#fff5e0" opacity="0.7"/>
+          </g>
+        </svg>
+      </span>
+    </div>
+  </section>
+
+  <!-- LOGO TICKER -->
+  <section class="logo-ticker-section">
+    <p class="ticker-label">Worked With</p>
+    <div style="overflow:hidden;">
+      <div class="ticker-track">
+        <!-- Set 1 -->
+        <div class="ticker-set">
+
+          <!-- Company 1: Replace logo SVG and name below -->
+          <div class="ticker-item">
+            <span class="ticker-logo-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="#1a1816"/>
+                <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C1</text>
+              </svg>
+            </span>
+            <span class="ticker-name">Company One</span>
+          </div>
+
+          <!-- Company 2 -->
+          <div class="ticker-item">
+            <span class="ticker-logo-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="#1a1816"/>
+                <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C2</text>
+              </svg>
+            </span>
+            <span class="ticker-name">Company Two</span>
+          </div>
+
+          <!-- Company 3 -->
+          <div class="ticker-item">
+            <span class="ticker-logo-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="#1a1816"/>
+                <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C3</text>
+              </svg>
+            </span>
+            <span class="ticker-name">Company Three</span>
+          </div>
+
+          <!-- Company 4 -->
+          <div class="ticker-item">
+            <span class="ticker-logo-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="#1a1816"/>
+                <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C4</text>
+              </svg>
+            </span>
+            <span class="ticker-name">Company Four</span>
+          </div>
+
+          <!-- Company 5 -->
+          <div class="ticker-item">
+            <span class="ticker-logo-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="#1a1816"/>
+                <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C5</text>
+              </svg>
+            </span>
+            <span class="ticker-name">Company Five</span>
+          </div>
+
+          <!-- Company 6 -->
+          <div class="ticker-item">
+            <span class="ticker-logo-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="#1a1816"/>
+                <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C6</text>
+              </svg>
+            </span>
+            <span class="ticker-name">Company Six</span>
+          </div>
+
+        </div>
+        <!-- Set 2 — exact duplicate for seamless loop -->
+        <div class="ticker-set" aria-hidden="true">
+          <div class="ticker-item">
+            <span class="ticker-logo-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#1a1816"/><text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C1</text></svg></span>
+            <span class="ticker-name">Company One</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-logo-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#1a1816"/><text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C2</text></svg></span>
+            <span class="ticker-name">Company Two</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-logo-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#1a1816"/><text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C3</text></svg></span>
+            <span class="ticker-name">Company Three</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-logo-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#1a1816"/><text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C4</text></svg></span>
+            <span class="ticker-name">Company Four</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-logo-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#1a1816"/><text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C5</text></svg></span>
+            <span class="ticker-name">Company Five</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-logo-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#1a1816"/><text x="16" y="22" text-anchor="middle" font-family="serif" font-size="14" fill="#f2f0eb">C6</text></svg></span>
+            <span class="ticker-name">Company Six</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -488,7 +706,7 @@
   <!-- ABOUT -->
   <section class="about-strip" id="about">
     <div class="about-text">
-      <h2>Hi, I'm Mahdi K — a brand strategist and content creator based in Bahrain.</h2>
+      <h2>Hi, I'm Mahdi K — a Marketing Specialist, brand strategist and content creator based in Bahrain.</h2>
       <p>With over five years of experience, I blend strategic thinking with creative execution to build brands that resonate. I specialize in social media strategy, community management, influencer partnerships, and campaigns that move the needle.</p>
       <p>Always open to new ideas and collabs — feel free to reach out if you'd like to work together.</p>
       <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
@@ -515,21 +733,21 @@
         <div class="footer-col">
           <h4>Pages</h4>
           <a href="#">Home <span class="footer-arrow">↗</span></a>
-          <a href="#projects">Work <span class="footer-arrow">↗</span></a>
+          <a href="#projects">Projects <span class="footer-arrow">↗</span></a>
           <a href="#about">About <span class="footer-arrow">↗</span></a>
           <a href="Mahdi_K_CV.pdf" download>CV <span class="footer-arrow">↓</span></a>
         </div>
         <div class="footer-col">
           <h4>Social</h4>
-          <a href="https://instagram.com" target="_blank">Instagram <span class="footer-arrow">↗</span></a>
-          <a href="https://linkedin.com" target="_blank">LinkedIn <span class="footer-arrow">↗</span></a>
-          <a href="https://twitter.com" target="_blank">Twitter (X) <span class="footer-arrow">↗</span></a>
+          <a href="https://www.instagram.com/imahdi.k/" target="_blank">Instagram <span class="footer-arrow">↗</span></a>
+          <a href="https://www.linkedin.com/in/mahdialmoalem/" target="_blank">LinkedIn <span class="footer-arrow">↗</span></a>
+          <a href="https://wa.me/0097336667009" target="_blank">Whatsapp <span class="footer-arrow">↗</span></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">©2025 Mahdi K · Bahrain</span>
-      <a href="mailto:mahdikhalil26@gmail.com" class="footer-email">mahdikhalil26@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#127f737a767b797a737e7b7e202452757f737b7e3c717d7f" class="footer-email"><span class="__cf_email__" data-cfemail="ed808c85898486858c818481dfdbad8a808c8481c38e8280">[email&#160;protected]</span></a>
     </div>
   </footer>
 
@@ -586,11 +804,4 @@
       const robot = document.getElementById('robot-check').checked;
       if (!name || !email || !msg) return alert('Please fill in all fields.');
       if (!robot) return alert("Please verify you're not a robot.");
-      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-      const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
-      window.location.href = `mailto:mahdikhalil26@gmail.com?subject=${subject}&body=${body}`;
-      closeModal();
-    }
-  </script>
-</body>
-</html>
+      const subject = encodeURIComponent(`Portfolio Contact from ${nam
