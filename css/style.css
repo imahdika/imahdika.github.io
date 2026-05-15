@@ -48,6 +48,7 @@
   --logo-filter:        brightness(0);
 }
 
+:root {
   /* Typography */
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -90,11 +91,11 @@
   --nav-h:         72px;
 
   /* Radius */
-  --r-sm:  4px;
-  --r-md:  8px;
-  --r-lg:  14px;
-  --r-xl:  24px;
-  --r-2xl: 36px;
+  --r-sm:  6px;
+  --r-md:  12px;
+  --r-lg:  20px;
+  --r-xl:  32px;
+  --r-2xl: 48px;
 }
 
 /* ============================================================
@@ -611,7 +612,8 @@ body:not(.loaded) .cursor-ring {
   color: var(--color-text-sec);
   text-decoration: none;
   transition: color var(--dur-fast);
-  padding-block: 0.25rem;
+  padding: 0.35rem 0.6rem;
+  letter-spacing: 0.02em;
 }
 
 .nav-link::after {
@@ -1028,13 +1030,15 @@ body.nav-open .hamburger-bar:nth-child(2) {
 }
 
 .about-profile {
-  width: 100%;
+  width: 85%;
+  max-width: 320px;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: var(--r-lg);
+  border-radius: var(--r-xl);
   filter: grayscale(20%) brightness(0.92);
   transition: filter var(--dur-slow) var(--ease-smooth);
   display: block;
+  margin: 0 auto var(--sp-4);
 }
 
 .about-profile-wrapper:hover .about-profile {
@@ -1067,9 +1071,10 @@ body.nav-open .hamburger-bar:nth-child(2) {
   position: absolute;
   left: 7px;
   top: 20px;
-  width: 1px;
+  width: 2px;
   height: calc(100% + var(--sp-4));
-  background: linear-gradient(to bottom, var(--color-border), transparent);
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-border-mid), transparent);
+  border-radius: 1px;
 }
 
 .timeline-dot {
