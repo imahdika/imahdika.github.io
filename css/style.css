@@ -10,8 +10,10 @@
 /* ============================================================
    1. DESIGN TOKENS (CSS Custom Properties)
    ============================================================ */
-:root {
-  /* Core Palette */
+
+/* DARK MODE (default) */
+:root,
+[data-theme="dark"] {
   --color-bg:           #0A0A0A;
   --color-surface-1:    #111111;
   --color-surface-2:    #1A1A1A;
@@ -25,6 +27,26 @@
   --color-border:       rgba(255, 255, 255, 0.07);
   --color-border-mid:   rgba(255, 255, 255, 0.11);
   --color-overlay:      rgba(10, 10, 10, 0.92);
+  --logo-filter:        brightness(0) invert(1);
+}
+
+/* LIGHT MODE */
+[data-theme="light"] {
+  --color-bg:           #F5F2ED;
+  --color-surface-1:    #ECEAE4;
+  --color-surface-2:    #E2DFD8;
+  --color-surface-3:    #D5D2CB;
+  --color-text-primary: #1A1816;
+  --color-text-sec:     #5A5550;
+  --color-text-muted:   #9A948C;
+  --color-accent:       #B8913E;
+  --color-accent-hover: #C8A04E;
+  --color-accent-dim:   rgba(184, 145, 62, 0.10);
+  --color-border:       rgba(0, 0, 0, 0.08);
+  --color-border-mid:   rgba(0, 0, 0, 0.14);
+  --color-overlay:      rgba(245, 242, 237, 0.94);
+  --logo-filter:        brightness(0);
+}
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -316,49 +338,170 @@ ol {
 }
 
 /* ============================================================
-   6. PAGE LOADER
+   6. CINEMATIC SPLIT LOADER
    ============================================================ */
 #loader {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background-color: var(--color-bg);
+  display: flex;
+  pointer-events: all;
+}
+
+/* Two curtain panels */
+.loader-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #0A0A0A;
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  transition: none; /* GSAP handles transitions */
+}
+
+.loader-panel-left  { left: 0;   justify-content: flex-end;  padding-right: 0.04em; }
+.loader-panel-right { right: 0;  justify-content: flex-start; padding-left: 0.04em; }
+
+/* Name split across the two panels */
+.loader-name-left,
+.loader-name-right {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 8.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #F5F2ED;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.loader-name-right {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+/* Gold seam line in the center */
+.loader-seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--color-accent) 30%,
+    var(--color-accent) 70%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  opacity: 0.5;
+}
+
+/* Scroll hint at bottom */
+.loader-hint {
+  position: absolute;
+  bottom: var(--sp-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  z-index: 10;
+  animation: loader-hint-pulse 2s ease-in-out infinite;
+}
+
+.loader-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.loader-hint-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  animation: scroll-pulse 2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes loader-hint-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* Body locked while loader is visible */
+body:not(.loaded) {
+  overflow: hidden;
+}
+
+/* ============================================================
+   6b. THEME TOGGLE BUTTON
+   ============================================================ */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-mid);
+  background: transparent;
+  color: var(--color-text-sec);
+  cursor: pointer;
+  transition:
+    color var(--dur-fast),
+    border-color var(--dur-fast),
+    background-color var(--dur-fast),
+    transform var(--dur-fast);
 }
 
-.loader-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--sp-4);
-}
-
-.loader-logo {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
+.theme-toggle:hover {
   color: var(--color-accent);
-  letter-spacing: -0.02em;
+  border-color: var(--color-accent);
+  transform: rotate(15deg);
 }
 
-.loader-bar-track {
-  width: 200px;
-  height: 1px;
-  background-color: var(--color-surface-3);
-  overflow: hidden;
-  border-radius: 1px;
+/* Show/hide sun vs moon based on theme */
+[data-theme="dark"]  .icon-moon { display: none; }
+[data-theme="dark"]  .icon-sun  { display: block; }
+[data-theme="light"] .icon-sun  { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
+
+/* Light mode: invert grain */
+[data-theme="light"] .hero-grain {
+  opacity: 0.2;
+  filter: invert(1);
 }
 
-.loader-bar {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
-  transform-origin: left center;
-  transform: scaleX(0);
-  border-radius: 1px;
+/* Light mode: marquee bg overlay */
+[data-theme="light"] .marquee-wrapper::before {
+  background: linear-gradient(to right, var(--color-surface-1), transparent);
+}
+[data-theme="light"] .marquee-wrapper::after {
+  background: linear-gradient(to left, var(--color-surface-1), transparent);
+}
+
+/* Light mode: logo filter */
+[data-theme="light"] .company-logo-item img {
+  filter: var(--logo-filter);
+}
+
+/* Light mode: contact bg text */
+[data-theme="light"] .contact-bg-text {
+  color: rgba(184, 145, 62, 0.04);
 }
 
 /* ============================================================
@@ -1048,12 +1191,17 @@ body.nav-open .hamburger-bar:nth-child(2) {
   max-width: 120px;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  opacity: 0.4;
-  transition: opacity var(--dur-base);
+  opacity: 0.45;
+  transition: opacity var(--dur-base), filter var(--dur-base);
+}
+
+[data-theme="light"] .company-logo-item img {
+  filter: brightness(0);
+  opacity: 0.5;
 }
 
 .company-logo-item:hover img {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .company-name-text {
@@ -1466,7 +1614,7 @@ body.nav-open .hamburger-bar:nth-child(2) {
 }
 
 /* ============================================================
-   14. SKILLS SECTION
+   14. SKILLS SECTION — Typographic list (no bars)
    ============================================================ */
 #skills {
   padding-block: var(--section-pad);
@@ -1483,7 +1631,7 @@ body.nav-open .hamburger-bar:nth-child(2) {
 .skills-group {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
+  gap: var(--sp-3);
 }
 
 .skills-group-title {
@@ -1492,53 +1640,63 @@ body.nav-open .hamburger-bar:nth-child(2) {
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
-  margin-bottom: var(--sp-1);
+  margin-bottom: var(--sp-2);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.skill-item {
+/* Clean typographic skill row */
+.skill-list {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0;
 }
 
-.skill-header {
+.skill-row {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
+  gap: 0.5rem;
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--dur-fast);
+}
+
+.skill-row:first-child {
+  border-top: none;
+}
+
+.skill-row:hover {
+  padding-inline: var(--sp-2);
+  background-color: var(--color-accent-dim);
+  border-radius: var(--r-sm);
 }
 
 .skill-name {
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-text-sec);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Dotted leader between name and level */
+.skill-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--color-border-mid);
+  margin-bottom: 4px;
+  min-width: 20px;
 }
 
 .skill-level {
   font-family: var(--font-body);
   font-size: var(--text-xs);
-  font-weight: 400;
-  color: var(--color-text-muted);
-  letter-spacing: 0.06em;
-}
-
-.skill-bar {
-  height: 1px;
-  background-color: var(--color-border);
-  position: relative;
-  border-radius: 1px;
-}
-
-.skill-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: linear-gradient(to right, var(--color-accent), var(--color-accent-hover));
-  border-radius: 1px;
-  width: 0;
-  transition: width 1.2s var(--ease-in-out);
-  will-change: width;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Skills tags */
@@ -1578,6 +1736,208 @@ body.nav-open .hamburger-bar:nth-child(2) {
 .skill-tag:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+/* ============================================================
+   14b. TYPOGRAPHIC PROJECT CARDS (no placeholder images)
+   ============================================================ */
+.project-card-typographic {
+  position: relative;
+  background-color: var(--color-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-card-bg-text {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 8rem);
+  font-weight: 900;
+  color: rgba(200, 169, 110, 0.06);
+  letter-spacing: -0.06em;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  transition: color var(--dur-slow);
+}
+
+.project-card:hover .project-card-bg-text {
+  color: rgba(200, 169, 110, 0.1);
+}
+
+.project-card-logo-area {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-6);
+  text-align: center;
+}
+
+.project-card-logo-area img {
+  max-height: 60px;
+  max-width: 200px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: opacity var(--dur-base);
+}
+
+[data-theme="light"] .project-card-logo-area img {
+  filter: brightness(0);
+}
+
+.project-card:hover .project-card-logo-area img {
+  opacity: 1;
+}
+
+.project-card-event-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.project-card-event-year {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Accent line at bottom of typographic cards */
+.project-card-typographic::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--card-accent, var(--color-accent)), transparent);
+  opacity: 0;
+  transition: opacity var(--dur-base);
+}
+
+.project-card:hover .project-card-typographic::after {
+  opacity: 1;
+}
+
+/* ============================================================
+   14c. CERTIFICATES SECTION
+   ============================================================ */
+#certificates {
+  padding-block: var(--section-pad);
+  background-color: var(--color-bg);
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--sp-3);
+  margin-top: var(--sp-12);
+}
+
+.cert-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-4) var(--sp-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  background-color: var(--color-surface-1);
+  position: relative;
+  transition:
+    border-color var(--dur-base),
+    background-color var(--dur-base),
+    transform var(--dur-base) var(--ease-out);
+  will-change: transform;
+}
+
+.cert-card:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface-2);
+  transform: translateY(-4px);
+}
+
+.cert-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  background-color: var(--color-accent-dim);
+  border: 1px solid rgba(200, 169, 110, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-accent);
+  transition: background-color var(--dur-fast);
+}
+
+.cert-card:hover .cert-icon {
+  background-color: rgba(200, 169, 110, 0.18);
+}
+
+.cert-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cert-issuer {
+  color: var(--color-accent);
+}
+
+.cert-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.cert-meta {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.cert-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-accent-dim);
+  border: 1px solid rgba(200, 169, 110, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-accent);
+  margin-left: auto;
+}
+
+.cert-placeholder-note {
+  margin-top: var(--sp-6);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
 }
 
 /* ============================================================

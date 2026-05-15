@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,25 +32,34 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Favicon placeholder (SVG inline) -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='serif'>M</text></svg>" />
 </head>
 <body>
 
   <!-- ============================================================
-       PAGE LOADER
+       CINEMATIC SPLIT LOADER
        ============================================================ -->
-  <div id="loader" role="status" aria-label="Loading">
-    <div class="loader-inner">
-      <span class="loader-logo">MK</span>
-      <div class="loader-bar-track">
-        <div class="loader-bar"></div>
-      </div>
+  <div id="loader" aria-label="Loading — click or scroll to enter" role="status">
+    <!-- Left curtain panel -->
+    <div class="loader-panel loader-panel-left" aria-hidden="true">
+      <div class="loader-name-left">Mahdi</div>
+    </div>
+    <!-- Right curtain panel -->
+    <div class="loader-panel loader-panel-right" aria-hidden="true">
+      <div class="loader-name-right">Khalil</div>
+    </div>
+    <!-- Center seam line -->
+    <div class="loader-seam" aria-hidden="true"></div>
+    <!-- Enter hint -->
+    <div class="loader-hint" aria-hidden="true">
+      <span class="loader-hint-text">scroll to enter</span>
+      <div class="loader-hint-line"></div>
     </div>
   </div>
 
   <!-- ============================================================
-       CUSTOM CURSOR (desktop only, hidden via CSS on touch)
+       CUSTOM CURSOR
        ============================================================ -->
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
@@ -70,18 +79,37 @@
           <li><a href="#work" class="nav-link">Work</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#certificates" class="nav-link">Certificates</a></li>
           <li>
-            <a href="#contact" class="nav-cta" aria-label="Contact Mahdi Khalil">
-              Get in Touch
-            </a>
+            <a href="#contact" class="nav-cta" aria-label="Contact Mahdi Khalil">Get in Touch</a>
           </li>
         </ul>
       </nav>
 
-      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-      </button>
+      <div class="nav-actions">
+        <!-- Light / Dark toggle -->
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          aria-label="Toggle light and dark mode"
+          title="Toggle theme"
+        >
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Navigation -->
@@ -91,11 +119,10 @@
         <li><a href="#work" class="mobile-nav-link">Work</a></li>
         <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
         <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+        <li><a href="#certificates" class="mobile-nav-link">Certificates</a></li>
         <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         <li>
-          <a href="Mahdi_K_CV.pdf" download class="mobile-nav-link mobile-nav-cv">
-            Download CV
-          </a>
+          <a href="Mahdi_K_CV.pdf" download class="mobile-nav-link mobile-nav-cv">Download CV</a>
         </li>
       </ul>
     </div>
@@ -105,7 +132,6 @@
        HERO SECTION
        ============================================================ -->
   <section id="hero" aria-labelledby="hero-headline">
-    <!-- Animated background elements -->
     <div class="hero-bg" aria-hidden="true">
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
@@ -113,26 +139,19 @@
     </div>
 
     <div class="hero-content container">
-      <!-- Time-based greeting -->
       <p class="hero-greeting eyebrow" aria-live="polite"></p>
 
-      <!-- Main headline -->
       <h1 class="hero-headline" id="hero-headline">
         <span class="line">Mahdi</span>
         <span class="line"><em class="accent-word">Khalil</em></span>
       </h1>
 
-      <!-- Professional title -->
-      <p class="hero-title">
-        Marketing Executive &amp; Brand Identity Specialist
-      </p>
+      <p class="hero-title">Marketing Executive &amp; Brand Identity Specialist</p>
 
-      <!-- Career introduction -->
       <p class="hero-description">
         Crafting market-defining brand identities, strategic marketing campaigns, and immersive creative experiences across the Gulf region and beyond — bridging the gap between business strategy and visual excellence.
       </p>
 
-      <!-- CTA Buttons -->
       <div class="hero-actions" role="group" aria-label="Primary actions">
         <a href="#work" class="btn-primary">
           <span>View My Work</span>
@@ -140,7 +159,7 @@
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href="Mahdi_K_CV.pdf" download class="btn-secondary" aria-label="Download Mahdi Khalil CV PDF">
+        <a href="Mahdi_K_CV.pdf" download class="btn-secondary" aria-label="Download CV PDF">
           <span>Download CV</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M8 3v7M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -148,7 +167,6 @@
         </a>
       </div>
 
-      <!-- Achievement stats -->
       <div class="hero-stats" role="list" aria-label="Career achievements">
         <div class="hero-stat" role="listitem">
           <span class="number" data-target="5" data-suffix="+">0</span>
@@ -169,7 +187,6 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="hero-scroll-indicator" aria-hidden="true">
       <span class="scroll-label">Scroll</span>
       <div class="scroll-line"></div>
@@ -177,11 +194,10 @@
   </section>
 
   <!-- ============================================================
-       ABOUT / PROFESSIONAL JOURNEY SECTION
+       ABOUT SECTION
        ============================================================ -->
   <section id="about" class="section" aria-labelledby="about-heading">
     <div class="container">
-
       <div class="about-header reveal">
         <p class="eyebrow">About</p>
         <h2 class="section-heading" id="about-heading">
@@ -190,7 +206,6 @@
       </div>
 
       <div class="about-grid">
-        <!-- Text column -->
         <div class="about-text">
           <p class="about-intro reveal">
             I transform business challenges into compelling brand narratives that resonate, convert, and endure.
@@ -202,7 +217,6 @@
             My approach unifies strategic thinking with meticulous creative execution. Whether defining a brand's visual identity from the ground up, architecting a trade marketing channel strategy, or directing a multi-touchpoint campaign — I bring both the analytical rigor of a marketing strategist and the visual sensibility of a seasoned creative director.
           </p>
 
-          <!-- Discipline tags -->
           <div class="about-disciplines reveal stagger-3" role="list" aria-label="Areas of expertise">
             <span class="discipline-tag" role="listitem">Marketing Strategy</span>
             <span class="discipline-tag" role="listitem">Brand Identity</span>
@@ -215,7 +229,6 @@
           </div>
         </div>
 
-        <!-- Visual column -->
         <div class="about-visual reveal-right">
           <div class="about-profile-wrapper">
             <img
@@ -230,7 +243,6 @@
             <div class="profile-accent-border" aria-hidden="true"></div>
           </div>
 
-          <!-- Career timeline -->
           <div class="timeline" role="list" aria-label="Career timeline">
             <div class="timeline-item active reveal stagger-1" role="listitem">
               <div class="timeline-dot" aria-hidden="true"></div>
@@ -281,95 +293,120 @@
       </h2>
     </div>
 
-    <!-- Marquee ticker -->
-    <div class="marquee-wrapper" aria-label="Companies worked with — scrolling list" role="img">
+    <div class="marquee-wrapper" aria-label="Companies worked with" role="img">
       <div class="marquee-track" aria-hidden="true">
-        <!-- Set 1 -->
+
+        <!-- === SET 1 === -->
         <div class="company-logo-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/320px-Coca-Cola_logo.svg.png" alt="Coca-Cola" loading="lazy" width="120" height="40" />
-        </div>
-        <div class="company-logo-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/IKEA_logo.svg/320px-IKEA_logo.svg.png" alt="IKEA" loading="lazy" width="80" height="40" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg" alt="Coca-Cola" loading="lazy" />
         </div>
         <div class="company-logo-item">
-          <img src="matrix.PNG" alt="Matrix" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">Matrix</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg" alt="IKEA" loading="lazy" />
         </div>
         <div class="company-logo-item">
-          <img src="BISB.PNG" alt="Bank of Bahrain — BISB" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">BISB</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Ipsos_logo.svg"
+               alt="Ipsos"
+               loading="lazy"
+               onerror="this.src='IPSOS.png'; this.onerror=null;" />
         </div>
         <div class="company-logo-item">
-          <img src="BIBF.PNG" alt="Bahrain Institute of Banking and Finance — BIBF" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">BIBF</span>
+          <img src="CIPS.png"
+               alt="CIPS"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">CIPS</span>
         </div>
         <div class="company-logo-item">
-          <img src="KAZBRO.PNG" alt="Kazbro" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">Kazbro</span>
+          <img src="BISB.PNG"
+               alt="BISB — Bank of Bahrain"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">BISB</span>
         </div>
         <div class="company-logo-item">
-          <img src="AMEER.PNG" alt="Ameer" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">Ameer</span>
+          <img src="BIBF.PNG"
+               alt="BIBF — Bahrain Institute of Banking and Finance"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">BIBF</span>
         </div>
         <div class="company-logo-item">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Batelco_logo.svg/320px-Batelco_logo.svg.png" alt="Batelco by Beyon" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">Batelco by Beyon</span>
+          <img src="matrix.png"
+               alt="Matrix"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">Matrix</span>
         </div>
         <div class="company-logo-item">
-          <img src="CIPS.png" alt="CIPS" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">CIPS</span>
+          <img src="KAZBRO.png"
+               alt="Kazbro"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">Kazbro</span>
         </div>
         <div class="company-logo-item">
-          <img src="NAMAL.png" alt="Namal" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">Namal</span>
+          <img src="AMEER.PNG"
+               alt="Ameer"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">Ameer</span>
         </div>
         <div class="company-logo-item">
-          <img src="IPSOS.png" alt="Ipsos" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
-          <span class="logo-text-fallback company-name-text" style="display:none">Ipsos</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Batelco_logo.svg"
+               alt="Batelco by Beyon"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">Batelco by Beyon</span>
         </div>
-        <!-- Set 2 (duplicate for seamless loop) -->
-        <div class="company-logo-item" aria-hidden="true">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/320px-Coca-Cola_logo.svg.png" alt="" loading="lazy" width="120" height="40" />
+        <div class="company-logo-item">
+          <img src="NAMAL.png"
+               alt="Namal"
+               loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="logo-text-fallback" style="display:none">Namal</span>
         </div>
+
+        <!-- === SET 2 (duplicate for seamless loop) === -->
         <div class="company-logo-item" aria-hidden="true">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/IKEA_logo.svg/320px-IKEA_logo.svg.png" alt="" loading="lazy" width="80" height="40" />
-        </div>
-        <div class="company-logo-item" aria-hidden="true">
-          <img src="matrix.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">Matrix</span>
-        </div>
-        <div class="company-logo-item" aria-hidden="true">
-          <img src="BISB.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">BISB</span>
-        </div>
-        <div class="company-logo-item" aria-hidden="true">
-          <img src="BIBF.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">BIBF</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg" alt="" loading="lazy" />
         </div>
         <div class="company-logo-item" aria-hidden="true">
-          <img src="KAZBRO.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">Kazbro</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg" alt="" loading="lazy" />
         </div>
         <div class="company-logo-item" aria-hidden="true">
-          <img src="AMEER.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">Ameer</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Ipsos_logo.svg" alt="" loading="lazy" onerror="this.src='IPSOS.png'; this.onerror=null;" />
         </div>
         <div class="company-logo-item" aria-hidden="true">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Batelco_logo.svg/320px-Batelco_logo.svg.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">Batelco by Beyon</span>
+          <img src="CIPS.png" alt="" loading="lazy" onerror="this.style.display='none'" />
         </div>
         <div class="company-logo-item" aria-hidden="true">
-          <img src="CIPS.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">CIPS</span>
+          <img src="BISB.PNG" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <span class="logo-text-fallback" style="display:none">BISB</span>
         </div>
         <div class="company-logo-item" aria-hidden="true">
-          <img src="NAMAL.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">Namal</span>
+          <img src="BIBF.PNG" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <span class="logo-text-fallback" style="display:none">BIBF</span>
         </div>
         <div class="company-logo-item" aria-hidden="true">
-          <img src="IPSOS.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
-          <span class="company-name-text" style="display:none">Ipsos</span>
+          <img src="matrix.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <span class="logo-text-fallback" style="display:none">Matrix</span>
         </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="KAZBRO.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <span class="logo-text-fallback" style="display:none">Kazbro</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="AMEER.PNG" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <span class="logo-text-fallback" style="display:none">Ameer</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Batelco_logo.svg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="NAMAL.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <span class="logo-text-fallback" style="display:none">Namal</span>
+        </div>
+
       </div>
     </div>
   </section>
@@ -379,26 +416,13 @@
        ============================================================ -->
   <section id="work" class="section" aria-labelledby="work-heading">
     <div class="container">
-      <div class="work-header">
-        <div class="reveal">
-          <p class="eyebrow">Portfolio</p>
-          <h2 class="section-heading" id="work-heading">
-            Selected<br /><em>Work</em>
-          </h2>
-        </div>
-
-        <!-- Filter tabs -->
-        <div class="filter-tabs" role="tablist" aria-label="Filter projects by category">
-          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="filter-tab" data-filter="brand" role="tab" aria-selected="false">Branding</button>
-          <button class="filter-tab" data-filter="event" role="tab" aria-selected="false">Events</button>
-          <button class="filter-tab" data-filter="strategy" role="tab" aria-selected="false">Strategy</button>
-          <button class="filter-tab" data-filter="3d" role="tab" aria-selected="false">3D Design</button>
-          <button class="filter-tab" data-filter="content" role="tab" aria-selected="false">Content</button>
-        </div>
+      <div class="work-header reveal">
+        <p class="eyebrow">Portfolio</p>
+        <h2 class="section-heading" id="work-heading">
+          Selected<br /><em>Work</em>
+        </h2>
       </div>
 
-      <!-- Projects grid -->
       <div class="projects-grid" id="projects-grid">
 
         <!-- Project 1: Saudi Food 2025 -->
@@ -410,19 +434,18 @@
           data-type="Event Branding / 3D Visualization"
           data-description="A comprehensive event branding project for Saudi Food 2025 — encompassing full 3D visualization, booth design, brand application, and marketing materials. Developed to present a cohesive and impactful brand experience at one of the region's premier food industry events."
           data-tags="Event Design, 3D Modeling, Brand Identity, Trade Marketing"
-          data-images='["https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop"]'
+          data-images='[]'
           role="article"
           tabindex="0"
           aria-label="View Saudi Food 2025 project"
         >
-          <div class="project-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop"
-              alt="Saudi Food 2025 event branding and 3D visualization"
-              loading="lazy"
-              width="800"
-              height="600"
-            />
+          <div class="project-card-media project-card-typographic" style="--card-accent:#C8A96E">
+            <div class="project-card-bg-text" aria-hidden="true">SF</div>
+            <div class="project-card-logo-area">
+              <!-- Replace with real event logo: <img src="your-logo.png" alt="Saudi Food 2025" /> -->
+              <p class="project-card-event-title">Saudi Food</p>
+              <p class="project-card-event-year">2025</p>
+            </div>
             <div class="project-card-overlay">
               <span class="project-card-hover-cta">View Project</span>
             </div>
@@ -430,7 +453,7 @@
           <div class="project-card-info">
             <p class="project-card-category label">Event / Branding / 3D</p>
             <h3 class="project-card-title">Saudi Food 2025</h3>
-            <div class="project-card-tags" aria-label="Project tags">
+            <div class="project-card-tags">
               <span class="project-tag">Event Design</span>
               <span class="project-tag">3D Modeling</span>
               <span class="project-tag">Brand Identity</span>
@@ -447,19 +470,18 @@
           data-type="Event Branding / 3D Visualization"
           data-description="Hawa AlManama 2026 — a landmark cultural and lifestyle event in Bahrain's capital. Full brand identity development, 3D venue visualization, event collateral, and marketing campaign materials created to position the event as a premium destination experience."
           data-tags="Event Design, 3D Modeling, Brand Identity, Marketing"
-          data-images='["https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"]'
+          data-images='[]'
           role="article"
           tabindex="0"
           aria-label="View Hawa AlManama 2026 project"
         >
-          <div class="project-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop"
-              alt="Hawa AlManama 2026 event branding"
-              loading="lazy"
-              width="800"
-              height="600"
-            />
+          <div class="project-card-media project-card-typographic" style="--card-accent:#9B8A6E">
+            <div class="project-card-bg-text" aria-hidden="true">HM</div>
+            <div class="project-card-logo-area">
+              <!-- Replace with real event logo -->
+              <p class="project-card-event-title">Hawa AlManama</p>
+              <p class="project-card-event-year">2026</p>
+            </div>
             <div class="project-card-overlay">
               <span class="project-card-hover-cta">View Project</span>
             </div>
@@ -467,7 +489,7 @@
           <div class="project-card-info">
             <p class="project-card-category label">Event / Branding / 3D</p>
             <h3 class="project-card-title">Hawa AlManama 2026</h3>
-            <div class="project-card-tags" aria-label="Project tags">
+            <div class="project-card-tags">
               <span class="project-tag">Event Design</span>
               <span class="project-tag">3D Modeling</span>
               <span class="project-tag">Brand Strategy</span>
@@ -484,19 +506,18 @@
           data-type="Brand Identity / Strategy / 3D"
           data-description="End-to-end brand identity and strategic communications for Autumn's Fair 2025 Festival. The project encompassed brand architecture, visual identity system, 3D experiential elements, and an integrated marketing strategy to maximize festival attendance and engagement."
           data-tags="Brand Identity, Strategy, 3D Visualization, Festival Design"
-          data-images='["https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&h=600&fit=crop"]'
+          data-images='[]'
           role="article"
           tabindex="0"
           aria-label="View Autumn's Fair 2025 Festival project"
         >
-          <div class="project-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800&h=600&fit=crop"
-              alt="Autumn's Fair 2025 Festival brand identity"
-              loading="lazy"
-              width="800"
-              height="600"
-            />
+          <div class="project-card-media project-card-typographic" style="--card-accent:#B5956A">
+            <div class="project-card-bg-text" aria-hidden="true">AF</div>
+            <div class="project-card-logo-area">
+              <!-- Replace with real event logo -->
+              <p class="project-card-event-title">Autumn's Fair Festival</p>
+              <p class="project-card-event-year">2025</p>
+            </div>
             <div class="project-card-overlay">
               <span class="project-card-hover-cta">View Project</span>
             </div>
@@ -504,7 +525,7 @@
           <div class="project-card-info">
             <p class="project-card-category label">Branding / Strategy / 3D</p>
             <h3 class="project-card-title">Autumn's Fair 2025 Festival</h3>
-            <div class="project-card-tags" aria-label="Project tags">
+            <div class="project-card-tags">
               <span class="project-tag">Brand Identity</span>
               <span class="project-tag">Strategy</span>
               <span class="project-tag">3D Design</span>
@@ -521,19 +542,18 @@
           data-type="Brand / Content / Email Marketing"
           data-description="Integrated brand communications and content strategy for Autumn's Fair 2025 — including email marketing campaigns, social media content, brand voice development, and audience engagement strategy. Delivered measurable uplift in event awareness and advance ticket registrations."
           data-tags="Brand Communications, Content Strategy, Email Marketing, Social Media"
-          data-images='["https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1423345440790-e9e0cc31c2a8?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=600&fit=crop"]'
+          data-images='[]'
           role="article"
           tabindex="0"
           aria-label="View Autumn's Fair 2025 project"
         >
-          <div class="project-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=800&h=600&fit=crop"
-              alt="Autumn's Fair 2025 brand content campaign"
-              loading="lazy"
-              width="800"
-              height="600"
-            />
+          <div class="project-card-media project-card-typographic" style="--card-accent:#A8896A">
+            <div class="project-card-bg-text" aria-hidden="true">AF</div>
+            <div class="project-card-logo-area">
+              <!-- Replace with real event logo -->
+              <p class="project-card-event-title">Autumn's Fair</p>
+              <p class="project-card-event-year">2022</p>
+            </div>
             <div class="project-card-overlay">
               <span class="project-card-hover-cta">View Project</span>
             </div>
@@ -541,7 +561,7 @@
           <div class="project-card-info">
             <p class="project-card-category label">Brand / Content / Email</p>
             <h3 class="project-card-title">Autumn's Fair 2025</h3>
-            <div class="project-card-tags" aria-label="Project tags">
+            <div class="project-card-tags">
               <span class="project-tag">Brand</span>
               <span class="project-tag">Content</span>
               <span class="project-tag">Email Marketing</span>
@@ -558,19 +578,18 @@
           data-type="Trade Marketing / 3D Design / POP"
           data-description="Point-of-purchase (POP) display floor stand design for a trade marketing initiative — from strategic retail placement concept through to fully detailed 3D visualization and production-ready specifications. Designed to maximize product visibility and drive in-store purchase intent."
           data-tags="Trade Marketing, 3D Design, POP Display, Retail Strategy"
-          data-images='["https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop"]'
+          data-images='[]'
           role="article"
           tabindex="0"
           aria-label="View Display Floor Stand project"
         >
-          <div class="project-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop"
-              alt="Display floor stand trade marketing 3D design"
-              loading="lazy"
-              width="800"
-              height="600"
-            />
+          <div class="project-card-media project-card-typographic" style="--card-accent:#C8A96E">
+            <div class="project-card-bg-text" aria-hidden="true">POP</div>
+            <div class="project-card-logo-area">
+              <!-- Replace with real project visual -->
+              <p class="project-card-event-title">Display Floor Stand</p>
+              <p class="project-card-event-year">2025</p>
+            </div>
             <div class="project-card-overlay">
               <span class="project-card-hover-cta">View Project</span>
             </div>
@@ -578,7 +597,7 @@
           <div class="project-card-info">
             <p class="project-card-category label">Trade Marketing / 3D / POP</p>
             <h3 class="project-card-title">Display Floor Stand</h3>
-            <div class="project-card-tags" aria-label="Project tags">
+            <div class="project-card-tags">
               <span class="project-tag">Trade Marketing</span>
               <span class="project-tag">3D Design</span>
               <span class="project-tag">POP</span>
@@ -595,19 +614,18 @@
           data-type="Brand / Email Marketing / Content"
           data-description="Brand communications and content strategy for Taste of the Upper West Side — a premium culinary event. Developed comprehensive email marketing campaigns, brand storytelling assets, and a content roadmap that drove audience engagement and positioned the event as a must-attend dining experience."
           data-tags="Brand Identity, Email Marketing, Content Strategy, Event Promotion"
-          data-images='["https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=600&fit=crop"]'
+          data-images='[]'
           role="article"
           tabindex="0"
           aria-label="View Taste of the Upper West Side project"
         >
-          <div class="project-card-media">
-            <img
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop"
-              alt="Taste of the Upper West Side brand and content campaign"
-              loading="lazy"
-              width="800"
-              height="600"
-            />
+          <div class="project-card-media project-card-typographic" style="--card-accent:#9B8060">
+            <div class="project-card-bg-text" aria-hidden="true">UWS</div>
+            <div class="project-card-logo-area">
+              <!-- Replace with real event logo -->
+              <p class="project-card-event-title">Taste of the Upper West Side</p>
+              <p class="project-card-event-year">2021</p>
+            </div>
             <div class="project-card-overlay">
               <span class="project-card-hover-cta">View Project</span>
             </div>
@@ -615,7 +633,7 @@
           <div class="project-card-info">
             <p class="project-card-category label">Brand / Email / Content</p>
             <h3 class="project-card-title">Taste of the Upper West Side</h3>
-            <div class="project-card-tags" aria-label="Project tags">
+            <div class="project-card-tags">
               <span class="project-tag">Brand</span>
               <span class="project-tag">Email Marketing</span>
               <span class="project-tag">Content</span>
@@ -623,7 +641,7 @@
           </div>
         </article>
 
-      </div><!-- /projects-grid -->
+      </div>
     </div>
   </section>
 
@@ -638,29 +656,19 @@
         </svg>
       </button>
 
-      <!-- Carousel -->
       <div class="lightbox-carousel">
         <div class="lightbox-slides" id="lightbox-slides"></div>
-
-        <!-- Nav arrows -->
-        <div class="carousel-nav" aria-label="Image navigation">
+        <div class="carousel-nav">
           <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Previous image">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M11 14L6 9l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 14L6 9l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Next image">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
-
-        <!-- Dots -->
-        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Image position"></div>
+        <div class="carousel-dots" id="carousel-dots" role="tablist"></div>
       </div>
 
-      <!-- Project details -->
       <div class="lightbox-body">
         <p class="lightbox-category label" id="lightbox-category-el"></p>
         <h2 class="lightbox-title" id="lightbox-title-el"></h2>
@@ -688,7 +696,6 @@
        ============================================================ -->
   <section id="skills" class="section" aria-labelledby="skills-heading">
     <div class="container">
-
       <div class="about-header reveal">
         <p class="eyebrow">Expertise</p>
         <h2 class="section-heading" id="skills-heading">
@@ -697,128 +704,84 @@
       </div>
 
       <div class="skills-grid">
-        <!-- Marketing & Strategy Skills -->
+        <!-- Marketing & Strategy -->
         <div class="skills-group reveal">
           <h3 class="skills-group-title">Marketing &amp; Strategy</h3>
-          <div class="skill-item stagger-1">
-            <div class="skill-header">
+          <ul class="skill-list" role="list">
+            <li class="skill-row stagger-1">
               <span class="skill-name">Marketing Strategy</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Expert</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Marketing Strategy: Expert">
-              <div class="skill-fill" data-width="92%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-2">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-2">
               <span class="skill-name">Trade Marketing</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Expert</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Trade Marketing: Expert">
-              <div class="skill-fill" data-width="90%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-3">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-3">
               <span class="skill-name">Brand Strategy</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Expert</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Brand Strategy: Expert">
-              <div class="skill-fill" data-width="88%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-4">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-4">
               <span class="skill-name">Campaign Development</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Advanced</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Campaign Development: Advanced">
-              <div class="skill-fill" data-width="85%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-5">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-5">
               <span class="skill-name">Social Media Management</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Advanced</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Social Media Management: Advanced">
-              <div class="skill-fill" data-width="82%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-6">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-6">
               <span class="skill-name">Email Marketing</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Advanced</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Email Marketing: Advanced">
-              <div class="skill-fill" data-width="80%"></div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
-        <!-- Creative & Design Skills -->
+        <!-- Creative & Design -->
         <div class="skills-group reveal stagger-2">
           <h3 class="skills-group-title">Creative &amp; Design</h3>
-          <div class="skill-item stagger-1">
-            <div class="skill-header">
+          <ul class="skill-list" role="list">
+            <li class="skill-row stagger-1">
               <span class="skill-name">Brand Identity Design</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Expert</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" aria-label="Brand Identity Design: Expert">
-              <div class="skill-fill" data-width="94%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-2">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-2">
               <span class="skill-name">Logo Design</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Expert</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Logo Design: Expert">
-              <div class="skill-fill" data-width="92%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-3">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-3">
               <span class="skill-name">Creative Direction</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Expert</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Creative Direction: Expert">
-              <div class="skill-fill" data-width="90%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-4">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-4">
               <span class="skill-name">Graphic Design</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Expert</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Graphic Design: Expert">
-              <div class="skill-fill" data-width="90%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-5">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-5">
               <span class="skill-name">Content Creation</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Advanced</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Content Creation: Advanced">
-              <div class="skill-fill" data-width="85%"></div>
-            </div>
-          </div>
-          <div class="skill-item stagger-6">
-            <div class="skill-header">
+            </li>
+            <li class="skill-row stagger-6">
               <span class="skill-name">3D Modeling &amp; Visualization</span>
+              <span class="skill-dots" aria-hidden="true"></span>
               <span class="skill-level">Proficient</span>
-            </div>
-            <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="3D Modeling and Visualization: Proficient">
-              <div class="skill-fill" data-width="70%"></div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Additional competencies -->
         <div class="skills-tags-section reveal">
           <p class="skills-tags-title label">Additional Competencies</p>
-          <div class="skills-tags" role="list" aria-label="Additional skills">
+          <div class="skills-tags" role="list">
             <span class="skill-tag" role="listitem">Community Management</span>
             <span class="skill-tag" role="listitem">Influencer Partnerships</span>
             <span class="skill-tag" role="listitem">Event Planning</span>
@@ -832,7 +795,103 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- ============================================================
+       ACADEMIC CERTIFICATES SECTION
+       ============================================================ -->
+  <section id="certificates" class="section" aria-labelledby="cert-heading">
+    <div class="container">
+      <div class="about-header reveal">
+        <p class="eyebrow">Education &amp; Credentials</p>
+        <h2 class="section-heading" id="cert-heading">
+          Academic<br /><em>Certificates</em>
+        </h2>
+      </div>
+
+      <div class="certificates-grid">
+
+        <!-- Certificate 1 — update with your real details -->
+        <div class="cert-card reveal stagger-1">
+          <div class="cert-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="cert-body">
+            <p class="cert-issuer label">Add your institution name here</p>
+            <h3 class="cert-name">Certificate / Degree Name</h3>
+            <p class="cert-meta">Year &nbsp;·&nbsp; Field of Study</p>
+          </div>
+          <div class="cert-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Certificate 2 -->
+        <div class="cert-card reveal stagger-2">
+          <div class="cert-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 12h8M8 8h8M8 16h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="cert-body">
+            <p class="cert-issuer label">Add your institution name here</p>
+            <h3 class="cert-name">Certificate / Degree Name</h3>
+            <p class="cert-meta">Year &nbsp;·&nbsp; Field of Study</p>
+          </div>
+          <div class="cert-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Certificate 3 -->
+        <div class="cert-card reveal stagger-3">
+          <div class="cert-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 20v-2a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="cert-body">
+            <p class="cert-issuer label">Add your institution name here</p>
+            <h3 class="cert-name">Certificate / Degree Name</h3>
+            <p class="cert-meta">Year &nbsp;·&nbsp; Field of Study</p>
+          </div>
+          <div class="cert-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Certificate 4 -->
+        <div class="cert-card reveal stagger-4">
+          <div class="cert-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="cert-body">
+            <p class="cert-issuer label">Add your institution name here</p>
+            <h3 class="cert-name">Certificate / Degree Name</h3>
+            <p class="cert-meta">Year &nbsp;·&nbsp; Field of Study</p>
+          </div>
+          <div class="cert-badge" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+      <p class="cert-placeholder-note">Update each card above with your real certificate name, issuing institution, year, and field of study.</p>
     </div>
   </section>
 
@@ -840,7 +899,6 @@
        CONTACT SECTION
        ============================================================ -->
   <section id="contact" class="section" aria-labelledby="contact-heading">
-    <!-- Background decorative text -->
     <div class="contact-bg-text" aria-hidden="true">Contact</div>
 
     <div class="contact-inner container">
@@ -854,13 +912,8 @@
         </p>
       </div>
 
-      <!-- Direct contact channels -->
       <div class="contact-channels reveal">
-        <a
-          href="mailto:info@mahdi.bh"
-          class="contact-channel"
-          aria-label="Send email to info@mahdi.bh"
-        >
+        <a href="mailto:info@mahdi.bh" class="contact-channel" aria-label="Send email to info@mahdi.bh">
           <div class="channel-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M2.5 5.5l7.5 5 7.5-5M2.5 5.5h15v10h-15V5.5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -870,13 +923,7 @@
           <p class="channel-value">info@mahdi.bh</p>
         </a>
 
-        <a
-          href="https://wa.me/0097336667009"
-          class="contact-channel"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Chat on WhatsApp — +973 3666 7009"
-        >
+        <a href="https://wa.me/0097336667009" class="contact-channel" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
           <div class="channel-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M10 2a8 8 0 0 1 6.93 12.02L18 18l-4.07-1.06A8 8 0 1 1 10 2z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -887,13 +934,7 @@
           <p class="channel-value">+973 3666 7009</p>
         </a>
 
-        <a
-          href="https://www.linkedin.com/in/mahdialmoalem/"
-          class="contact-channel"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View LinkedIn profile"
-        >
+        <a href="https://www.linkedin.com/in/mahdialmoalem/" class="contact-channel" target="_blank" rel="noopener noreferrer" aria-label="View LinkedIn profile">
           <div class="channel-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M3 7h3v10H3V7zM4.5 5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM9 7h2.8v1.4h.04C12.38 7.6 13.56 7 15 7c3.2 0 3.8 2.1 3.8 4.84V17H16v-4.6c0-1.1 0-2.5-1.53-2.5S12.6 11.3 12.6 12.3V17H9.8V7z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -904,91 +945,39 @@
         </a>
       </div>
 
-      <!-- Contact form + aside -->
       <div class="contact-form-wrapper">
-        <form
-          id="contact-form"
-          class="contact-form reveal"
-          action="https://formspree.io/f/YOUR_FORM_ID"
-          method="POST"
-          novalidate
-          aria-label="Contact form"
-        >
+        <form id="contact-form" class="contact-form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate aria-label="Contact form">
           <div class="form-group">
             <label class="form-label" for="form-name">Full Name</label>
-            <input
-              class="form-input"
-              type="text"
-              id="form-name"
-              name="name"
-              placeholder="Your full name"
-              autocomplete="name"
-              required
-              aria-required="true"
-              aria-describedby="name-error"
-            />
+            <input class="form-input" type="text" id="form-name" name="name" placeholder="Your full name" autocomplete="name" required aria-required="true" aria-describedby="name-error" />
             <span class="form-error-msg" id="name-error" role="alert" aria-live="polite"></span>
           </div>
-
           <div class="form-group">
             <label class="form-label" for="form-email">Email Address</label>
-            <input
-              class="form-input"
-              type="email"
-              id="form-email"
-              name="email"
-              placeholder="your@email.com"
-              autocomplete="email"
-              required
-              aria-required="true"
-              aria-describedby="email-error"
-            />
+            <input class="form-input" type="email" id="form-email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true" aria-describedby="email-error" />
             <span class="form-error-msg" id="email-error" role="alert" aria-live="polite"></span>
           </div>
-
           <div class="form-group">
             <label class="form-label" for="form-subject">Subject</label>
-            <input
-              class="form-input"
-              type="text"
-              id="form-subject"
-              name="subject"
-              placeholder="How can I help you?"
-              required
-              aria-required="true"
-              aria-describedby="subject-error"
-            />
+            <input class="form-input" type="text" id="form-subject" name="subject" placeholder="How can I help you?" required aria-required="true" aria-describedby="subject-error" />
             <span class="form-error-msg" id="subject-error" role="alert" aria-live="polite"></span>
           </div>
-
           <div class="form-group">
             <label class="form-label" for="form-message">Message</label>
-            <textarea
-              class="form-textarea"
-              id="form-message"
-              name="message"
-              placeholder="Tell me about your project, role, or collaboration idea..."
-              rows="5"
-              required
-              aria-required="true"
-              aria-describedby="message-error"
-            ></textarea>
+            <textarea class="form-textarea" id="form-message" name="message" placeholder="Tell me about your project, role, or collaboration idea..." rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
             <span class="form-error-msg" id="message-error" role="alert" aria-live="polite"></span>
           </div>
-
           <button type="submit" class="btn-primary form-submit" id="form-submit">
             <span id="form-submit-text">Send Message</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M2 8h10.5M9 4.5l3.5 3.5L9 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
-
           <div class="form-success" id="form-success" aria-live="polite" role="status">
             Your message has been sent. Thank you — I will be in touch shortly.
           </div>
         </form>
 
-        <!-- Contact aside -->
         <div class="contact-info-aside reveal stagger-2">
           <div class="aside-item">
             <p class="aside-label label">Location</p>
@@ -999,19 +988,8 @@
             <a href="tel:+97336667009" class="aside-value aside-link">+973 3666 7009</a>
           </div>
           <div class="aside-item">
-            <p class="aside-label label">Instagram</p>
-            <a
-              href="https://www.instagram.com/imahdi.k/"
-              class="aside-value aside-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >@imahdi.k</a>
-          </div>
-          <div class="aside-item">
             <p class="aside-label label">Resume</p>
-            <a href="Mahdi_K_CV.pdf" download class="aside-value aside-link">
-              Download CV (PDF)
-            </a>
+            <a href="Mahdi_K_CV.pdf" download class="aside-value aside-link">Download CV (PDF)</a>
           </div>
           <div class="aside-availability">
             <div class="availability-dot" aria-hidden="true"></div>
@@ -1019,7 +997,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -1028,28 +1005,19 @@
        ============================================================ -->
   <footer>
     <div class="footer-inner container">
-      <p class="footer-copy">
-        &copy; 2025 Mahdi Khalil. All rights reserved. Bahrain.
-      </p>
+      <p class="footer-copy">&copy; 2025 Mahdi Khalil. All rights reserved. Bahrain.</p>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:info@mahdi.bh" class="footer-link">Email</a>
         <a href="https://www.linkedin.com/in/mahdialmoalem/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://www.instagram.com/imahdi.k/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="Mahdi_K_CV.pdf" download class="footer-link">CV</a>
       </nav>
     </div>
   </footer>
 
-  <!-- ============================================================
-       SCRIPTS
-       ============================================================ -->
-
-  <!-- GSAP Core + Plugins -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d+ByiRbhDYr0+JE0Bvbm2Sgg0pPVBHmPHe/bDPsxvbFuZiSe94RZm1P+A5+RnuUOsM5HKzZsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOCC5sSeJjcM/0TKvMXZJEa0klQ1n4qFnwx8n5ub9bRYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" integrity="sha512-1PKqXBz2ju2JcAerHKL8dNPSExh4OA3s7M7NMjFjWTFEBpEfZRe/SX/NTqeFRrN0x5RBFxHBJ8PdgFIy3wXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <!-- Main JS -->
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

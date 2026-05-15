@@ -21,15 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollToPlugin);
   }
 
-  initLoader();
+  initTheme();        // Light/dark toggle — before anything renders
+  initLoader();       // Cinematic split curtain — calls startHeroEntrance on complete
   initNav();
   initHeroGreeting();
   initScrollReveal();
   initParallax();
   initMarquee();
-  initPortfolioFilter();
   initLightbox();
-  initSkillBars();
   initCounters();
   initContactForm();
   initCustomCursor();
@@ -53,46 +52,111 @@ function qsa(selector, root) {
 }
 
 /* ============================================================
-   PAGE LOADER
+   THEME TOGGLE (Light / Dark)
+   ============================================================ */
+
+function initTheme() {
+  const html = document.documentElement;
+  const btn  = qs('#theme-toggle');
+
+  // Restore saved preference, default to dark
+  const saved = localStorage.getItem('mk-theme') || 'dark';
+  html.setAttribute('data-theme', saved);
+
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next    = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('mk-theme', next);
+
+    // Subtle rotate animation on click
+    if (window.gsap && !prefersReducedMotion()) {
+      gsap.fromTo(btn, { rotate: 0 }, { rotate: 360, duration: 0.5, ease: 'power2.out' });
+    }
+  });
+}
+
+/* ============================================================
+   CINEMATIC SPLIT LOADER
    ============================================================ */
 
 function initLoader() {
-  const loader = qs('#loader');
+  const loader       = qs('#loader');
+  const panelLeft    = qs('.loader-panel-left');
+  const panelRight   = qs('.loader-panel-right');
+  const seam         = qs('.loader-seam');
+  const hint         = qs('.loader-hint');
+
   if (!loader) {
-    startHeroEntrance();
     document.body.classList.add('loaded');
+    startHeroEntrance();
     return;
   }
 
-  const loaderBar = qs('.loader-bar');
-
-  if (loaderBar && window.gsap && !prefersReducedMotion()) {
-    gsap.fromTo(
-      loaderBar,
-      { scaleX: 0, transformOrigin: 'left center' },
-      { scaleX: 1, duration: 1.0, ease: 'power2.inOut' }
-    );
+  // If reduced motion: skip animation entirely
+  if (prefersReducedMotion()) {
+    loader.style.display = 'none';
+    document.body.classList.add('loaded');
+    startHeroEntrance();
+    return;
   }
 
-  const hideLoader = () => {
-    if (window.gsap && !prefersReducedMotion()) {
-      gsap.to(loader, {
-        opacity: 0,
-        duration: 0.5,
+  let opened = false;
+
+  function openCurtain() {
+    if (opened) return;
+    opened = true;
+
+    // Remove scroll/click listeners
+    window.removeEventListener('scroll', openCurtain, { passive: true });
+    window.removeEventListener('wheel',  openCurtain, { passive: true });
+    loader.removeEventListener('click',  openCurtain);
+    loader.removeEventListener('touchstart', openCurtain, { passive: true });
+
+    // Fade hint out
+    if (hint && window.gsap) {
+      gsap.to(hint, { opacity: 0, y: 10, duration: 0.3 });
+    }
+
+    // Animate panels apart
+    if (window.gsap) {
+      const tl = gsap.timeline({
         onComplete: () => {
           loader.style.display = 'none';
           document.body.classList.add('loaded');
           startHeroEntrance();
         },
       });
+
+      tl.to(seam, { opacity: 0, duration: 0.2 }, 0)
+        .to(panelLeft,  { x: '-100%', duration: 1.1, ease: 'power3.inOut' }, 0.1)
+        .to(panelRight, { x: '100%',  duration: 1.1, ease: 'power3.inOut' }, 0.1);
     } else {
       loader.style.display = 'none';
       document.body.classList.add('loaded');
       startHeroEntrance();
     }
-  };
+  }
 
-  setTimeout(hideLoader, prefersReducedMotion() ? 300 : 1300);
+  // Brief entrance animation for the name
+  if (window.gsap) {
+    const tl = gsap.timeline();
+    tl.from('.loader-name-left',  { x: -60, opacity: 0, duration: 0.8, ease: 'power3.out' }, 0.2)
+      .from('.loader-name-right', { x:  60, opacity: 0, duration: 0.8, ease: 'power3.out' }, 0.2)
+      .from(seam,   { scaleY: 0, transformOrigin: 'center center', opacity: 0, duration: 0.6, ease: 'power2.out' }, 0.5)
+      .from(hint,   { opacity: 0, y: 12, duration: 0.5 }, 0.9);
+  }
+
+  // Trigger: scroll, wheel, click, or touch
+  window.addEventListener('scroll',     openCurtain, { passive: true, once: true });
+  window.addEventListener('wheel',      openCurtain, { passive: true, once: true });
+  loader.addEventListener('click',      openCurtain);
+  loader.addEventListener('touchstart', openCurtain, { passive: true });
+
+  // Auto-open fallback after 6s (prevent users being stuck)
+  setTimeout(() => openCurtain(), 6000);
 }
 
 /* ============================================================
@@ -275,78 +339,7 @@ function initMarquee() {
   }
 }
 
-/* ============================================================
-   PORTFOLIO FILTER
-   ============================================================ */
-
-function initPortfolioFilter() {
-  const tabs = qsa('.filter-tab');
-  const cards = qsa('.project-card');
-  if (!tabs.length || !cards.length) return;
-
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      tabs.forEach((t) => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-
-      const filter = tab.dataset.filter || 'all';
-      const toShow = [];
-      const toHide = [];
-
-      cards.forEach((card) => {
-        const category = card.dataset.category || '';
-        if (filter === 'all' || category.split(' ').includes(filter)) {
-          toShow.push(card);
-        } else {
-          toHide.push(card);
-        }
-      });
-
-      if (window.gsap && !prefersReducedMotion()) {
-        if (toHide.length) {
-          gsap.to(toHide, {
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.25,
-            ease: 'power2.in',
-            onComplete: () => {
-              toHide.forEach((card) => {
-                card.style.display = 'none';
-                card.setAttribute('aria-hidden', 'true');
-              });
-            },
-          });
-        }
-        if (toShow.length) {
-          setTimeout(() => {
-            toShow.forEach((card) => {
-              card.style.display = '';
-              card.setAttribute('aria-hidden', 'false');
-            });
-            gsap.fromTo(
-              toShow,
-              { opacity: 0, scale: 0.95 },
-              { opacity: 1, scale: 1, duration: 0.4, ease: 'power2.out', stagger: 0.06 }
-            );
-          }, toHide.length ? 260 : 0);
-        }
-      } else {
-        toHide.forEach((card) => {
-          card.style.display = 'none';
-          card.setAttribute('aria-hidden', 'true');
-        });
-        toShow.forEach((card) => {
-          card.style.display = '';
-          card.setAttribute('aria-hidden', 'false');
-        });
-      }
-    });
-  });
-}
+/* Portfolio filter removed — all projects shown always */
 
 /* ============================================================
    PROJECT LIGHTBOX
@@ -557,51 +550,7 @@ function initLightbox() {
   }, { passive: true });
 }
 
-/* ============================================================
-   SKILL BARS
-   ============================================================ */
-
-function initSkillBars() {
-  const skillFills = qsa('.skill-fill');
-  if (!skillFills.length) return;
-
-  if (prefersReducedMotion()) {
-    skillFills.forEach((el) => {
-      el.style.width = el.dataset.width || '0%';
-    });
-    return;
-  }
-
-  skillFills.forEach((el) => {
-    el.style.width = '0%';
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const targetWidth = el.dataset.width || '0%';
-          const index = skillFills.indexOf(el);
-          if (window.gsap) {
-            gsap.to(el, {
-              width: targetWidth,
-              duration: 1.2,
-              ease: 'power2.out',
-              delay: (index % 6) * 0.08,
-            });
-          } else {
-            el.style.width = targetWidth;
-          }
-          observer.unobserve(el);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  skillFills.forEach((el) => observer.observe(el));
-}
+/* Skill bars removed — replaced with typographic list */
 
 /* ============================================================
    ANIMATED COUNTERS
