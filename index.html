@@ -1,785 +1,1055 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahdi Khalil — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    :root {
-      --bg: #f2f0eb;
-      --ink: #1a1816;
-      --muted: #8a8580;
-      --border: #d8d5cf;
-      --white: #ffffff;
-      --radius: 14px;
-    }
+  <!-- SEO Meta -->
+  <title>Mahdi Khalil — Marketing Executive &amp; Brand Identity Specialist</title>
+  <meta name="description" content="Mahdi Khalil is a Marketing Executive, Brand Identity Specialist, Trade Marketing Specialist, and Creative Designer based in Bahrain with 5+ years of experience crafting impactful campaigns and brand experiences." />
+  <meta name="author" content="Mahdi Khalil" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://imahdika.github.io/" />
 
-    html { scroll-behavior: smooth; }
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://imahdika.github.io/" />
+  <meta property="og:title" content="Mahdi Khalil — Marketing Executive &amp; Brand Identity Specialist" />
+  <meta property="og:description" content="5+ years crafting marketing strategies, brand identities, and creative campaigns across 11 companies in the Gulf region." />
+  <meta property="og:image" content="https://imahdika.github.io/pfp.png.png" />
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mahdi Khalil — Marketing Executive &amp; Brand Identity Specialist" />
+  <meta name="twitter:description" content="5+ years crafting marketing strategies, brand identities, and creative campaigns across 11 companies in the Gulf region." />
 
-    a { color: inherit; text-decoration: none; }
+  <!-- Fonts: Playfair Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 52px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
 
-    .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px; letter-spacing: -0.3px;
-    }
-
-    .nav-links {
-      display: flex; gap: 32px; align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 13px; color: var(--muted);
-      letter-spacing: 0.02em; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--ink); }
-
-    .nav-cv {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
-      background: var(--ink); color: var(--white) !important;
-      padding: 9px 20px; border-radius: 40px;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .nav-cv:hover { background: #3a3733 !important; transform: translateY(-1px); }
-
-    /* HERO */
-    .hero {
-      padding: 86px 52px 64px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-eyebrow {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 22px;
-      opacity: 0; animation: rise 0.7s 0.1s forwards;
-    }
-
-    .hero-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(56px, 9vw, 104px);
-      line-height: 1.0; letter-spacing: -2.5px; color: var(--ink);
-      opacity: 0; animation: rise 0.7s 0.2s forwards;
-    }
-    .hero-headline em { font-style: italic; color: var(--muted); }
-
-    .hero-sub {
-      margin-top: 34px; max-width: 500px;
-      font-size: 16px; color: var(--muted); font-weight: 300; line-height: 1.7;
-      opacity: 0; animation: rise 0.7s 0.35s forwards;
-    }
-
-    .hero-actions {
-      margin-top: 38px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
-      opacity: 0; animation: rise 0.7s 0.5s forwards;
-    }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--ink); color: var(--white);
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 13px 26px; border-radius: 40px; border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #3a3733; transform: translateY(-1px); }
-
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--ink); border: 1px solid var(--border);
-      padding: 12px 24px; border-radius: 40px;
-      transition: border-color 0.2s, background 0.2s; text-decoration: none;
-    }
-    .btn-outline:hover { border-color: var(--ink); background: rgba(26,24,22,0.04); }
-
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--muted); transition: color 0.2s;
-    }
-    .btn-ghost:hover { color: var(--ink); }
-
-    /* PROJECTS GRID */
-    .projects { padding: 72px 52px 88px; }
-
-    .section-header {
-      display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 44px;
-    }
-    .section-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
-    }
-    .section-count { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
-
-    /* 12-column editorial grid */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 22px;
-    }
-
-    .proj-card:nth-child(1) { grid-column: span 7; }
-    .proj-card:nth-child(2) { grid-column: span 5; }
-    .proj-card:nth-child(3) { grid-column: span 5; }
-    .proj-card:nth-child(4) { grid-column: span 7; }
-    .proj-card:nth-child(5) { grid-column: span 6; }
-    .proj-card:nth-child(6) { grid-column: span 6; }
-
-    .proj-card {
-      position: relative; border-radius: var(--radius); overflow: hidden;
-      cursor: pointer; background: #e4e1da;
-    }
-
-    /* Varied aspect ratios per slot */
-    .proj-card:nth-child(1) .proj-img-wrap { aspect-ratio: 16/10; }
-    .proj-card:nth-child(2) .proj-img-wrap { aspect-ratio: 3/4; }
-    .proj-card:nth-child(3) .proj-img-wrap { aspect-ratio: 3/4; }
-    .proj-card:nth-child(4) .proj-img-wrap { aspect-ratio: 16/9; }
-    .proj-card:nth-child(5) .proj-img-wrap { aspect-ratio: 4/3; }
-    .proj-card:nth-child(6) .proj-img-wrap { aspect-ratio: 4/3; }
-
-    .proj-img-wrap {
-      width: 100%; overflow: hidden; position: relative;
-    }
-
-    .proj-img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .proj-card:hover .proj-img { transform: scale(1.04); }
-
-    /* Dashed placeholder shown when no image is set */
-    .proj-placeholder {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-      background: #eae7e0;
-      border: 2px dashed var(--border);
-      color: var(--muted); pointer-events: none;
-    }
-    .proj-placeholder svg { opacity: 0.35; }
-    .proj-placeholder span {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45;
-    }
-
-    /* Hide placeholder once a real image src is provided */
-    .proj-img-wrap img[src]:not([src=""]) + .proj-placeholder { display: none; }
-
-    /* Hover overlay */
-    .proj-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 32px 22px 20px;
-      background: linear-gradient(to top, rgba(26,24,22,0.75) 0%, transparent 100%);
-      opacity: 0; transform: translateY(6px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .proj-card:hover .proj-overlay { opacity: 1; transform: translateY(0); }
-
-    .proj-overlay-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 19px; color: #fff; letter-spacing: -0.3px; line-height: 1.2;
-    }
-    .proj-overlay-tags {
-      font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; font-weight: 300;
-    }
-
-    /* Label below card */
-    .proj-info { padding: 15px 2px 6px; }
-    .proj-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 17px; letter-spacing: -0.3px; color: var(--ink);
-    }
-    .proj-meta {
-      display: flex; justify-content: space-between; align-items: center; margin-top: 4px;
-    }
-    .proj-tags { font-size: 11px; color: var(--muted); font-weight: 300; }
-    .proj-year  { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
-
-    /* ABOUT */
-    .about-strip {
-      padding: 72px 52px;
-      border-top: 1px solid var(--border);
-      display: grid; grid-template-columns: 1fr 320px; gap: 80px; align-items: start;
-    }
-    .about-text h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(26px,3.5vw,40px); line-height: 1.25; letter-spacing: -0.8px; margin-bottom: 22px;
-    }
-    .about-text p { color: var(--muted); font-weight: 300; line-height: 1.8; font-size: 15px; margin-bottom: 14px; }
-    .about-portrait { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); display: block; }
-
-    /* FOOTER */
-    footer { padding: 52px; border-top: 1px solid var(--border); }
-    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 44px; }
-    .footer-logo { font-family: 'DM Serif Display', serif; font-size: 24px; letter-spacing: -0.5px; }
-    .footer-nav { display: flex; gap: 64px; }
-    .footer-col h4 {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 16px;
-    }
-    .footer-col a {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 13px; color: var(--ink); margin-bottom: 10px; transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--muted); }
-    .footer-arrow { font-size: 11px; opacity: 0.4; }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      padding-top: 28px; border-top: 1px solid var(--border);
-    }
-    .footer-copy { font-size: 12px; color: var(--muted); }
-    .footer-email { font-size: 12px; color: var(--muted); transition: color 0.2s; }
-    .footer-email:hover { color: var(--ink); }
-
-    /* MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(26,24,22,0.55); z-index: 999;
-      backdrop-filter: blur(5px);
-      align-items: center; justify-content: center;
-    }
-    .modal-overlay.open { display: flex; animation: fade-in 0.25s ease; }
-    .modal-box {
-      background: var(--white); border-radius: 18px; padding: 48px;
-      width: 90%; max-width: 460px; animation: rise 0.3s ease;
-    }
-    .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-    .modal-title { font-family: 'DM Serif Display', serif; font-size: 28px; letter-spacing: -0.5px; }
-    .modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 22px; line-height: 1; transition: color 0.2s; }
-    .modal-close:hover { color: var(--ink); }
-    .form-group { margin-bottom: 18px; }
-    .form-label { display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
-    .form-input, .form-textarea {
-      width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px;
-      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
-      background: var(--bg); outline: none; transition: border-color 0.2s;
-    }
-    .form-input:focus, .form-textarea:focus { border-color: var(--ink); }
-    .form-textarea { resize: vertical; min-height: 90px; }
-    .robot-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; font-size: 13px; color: var(--muted); }
-    .robot-row input { accent-color: var(--ink); }
-    .submit-btn {
-      width: 100%; background: var(--ink); color: var(--white); border: none; border-radius: 8px; padding: 14px;
-      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
-      letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: background 0.2s;
-    }
-    .submit-btn:hover { background: #3a3733; }
-
-    /* THOUGHT HEADLINE SECTION */
-    .thought-section {
-      padding: 72px 52px 64px;
-      border-bottom: 1px solid var(--border);
-    }
-    .thought-inner {
-      display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
-    }
-    .thought-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 5vw, 62px);
-      line-height: 1.1; letter-spacing: -1.5px; color: var(--ink);
-    }
-    .thought-headline em { font-style: italic; color: var(--muted); }
-    .rocket-wrap {
-      display: inline-flex; align-items: center; cursor: default; flex-shrink: 0;
-    }
-    .rocket-svg {
-      width: clamp(40px, 5vw, 64px);
-      height: clamp(40px, 5vw, 64px);
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-      transform-origin: center center;
-    }
-    .rocket-wrap:hover .rocket-svg {
-      transform: translate(6px, -6px) rotate(-10deg) scale(1.12);
-    }
-    .rocket-wrap:hover .rocket-flame {
-      opacity: 1;
-    }
-    .rocket-flame {
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    /* LOGO TICKER */
-    .logo-ticker-section {
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .ticker-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); padding: 0 52px; margin-bottom: 28px;
-    }
-    .ticker-track {
-      display: flex; gap: 0;
-      width: max-content;
-      animation: ticker-scroll 30s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    .ticker-set {
-      display: flex; align-items: center; gap: 0;
-    }
-    .ticker-item {
-      display: flex; align-items: center; gap: 11px;
-      padding: 0 44px;
-      border-right: 1px solid var(--border);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .ticker-item:last-child { border-right: none; }
-    .ticker-logo-icon {
-      width: 32px; height: 32px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .ticker-logo-icon svg { width: 100%; height: 100%; }
-    .ticker-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px; letter-spacing: -0.3px; color: var(--ink);
-      opacity: 0.75;
-      transition: opacity 0.2s;
-    }
-    .ticker-item:hover .ticker-name { opacity: 1; }
-
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ANIMATIONS */
-    @keyframes rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .proj-card:nth-child(1), .proj-card:nth-child(4) { grid-column: span 12; }
-      .proj-card:nth-child(2), .proj-card:nth-child(3),
-      .proj-card:nth-child(5), .proj-card:nth-child(6) { grid-column: span 6; }
-      .proj-card:nth-child(n) .proj-img-wrap { aspect-ratio: 4/3; }
-    }
-    @media (max-width: 640px) {
-      nav { padding: 16px 24px; }
-      .nav-cv span { display: none; }
-      .hero, .projects, .about-strip, footer { padding-left: 24px; padding-right: 24px; }
-      .hero-headline { letter-spacing: -1.5px; }
-      .about-strip { grid-template-columns: 1fr; gap: 36px; }
-      .footer-top { flex-direction: column; gap: 36px; }
-      .footer-nav { gap: 36px; }
-      .proj-card:nth-child(n) { grid-column: span 12; }
-      .project-grid { gap: 14px; }
-      .thought-section { padding: 52px 24px 48px; }
-      .ticker-label { padding: 0 24px; }
-      .ticker-item { padding: 0 28px; }
-    }
-  </style>
+  <!-- Favicon placeholder (SVG inline) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='serif'>M</text></svg>" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">Mahdi Khalil</a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#" onclick="openModal(); return false;">Contact</a>
-      <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="nav-cv">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>Download CV</span>
-      </a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-eyebrow" id="greeting-text">Welcome</div>
-    <h1 class="hero-headline">Mahdi <em>K</em></h1>
-    <p class="hero-sub"> <b>Marketing Specialist</b>, Brand strategist, social media manager, Graphic Designer, 3D Modeler and content creator with over five years of experience crafting impactful campaigns and events that drive real business growth.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="openModal()">Let's Connect ↗</button>
-      <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="btn-outline">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download CV
-      </a>
-      <a href="#projects" class="btn-ghost">View Work ↓</a>
-    </div>
-  </section>
-
-  <!-- THOUGHT HEADLINE -->
-  <section class="thought-section">
-    <div class="thought-inner">
-      <h2 class="thought-headline">Implementing thoughts<br>into <em>reality</em></h2>
-      <span class="rocket-wrap" aria-hidden="true">
-        <svg class="rocket-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Rocket body -->
-          <path d="M32 6 C20 6 14 22 14 34 L18 38 L46 38 L50 34 C50 22 44 6 32 6 Z" fill="#1a1816"/>
-          <!-- Nose tip -->
-          <path d="M32 6 C28 6 24 12 22 18 L42 18 C40 12 36 6 32 6 Z" fill="#3a3733"/>
-          <!-- Window -->
-          <circle cx="32" cy="26" r="6" fill="#f2f0eb" stroke="#1a1816" stroke-width="1.5"/>
-          <circle cx="32" cy="26" r="3.5" fill="#d8d5cf"/>
-          <!-- Left fin -->
-          <path d="M18 38 L10 50 L22 44 Z" fill="#1a1816"/>
-          <!-- Right fin -->
-          <path d="M46 38 L54 50 L42 44 Z" fill="#1a1816"/>
-          <!-- Bottom nozzle -->
-          <rect x="26" y="38" width="12" height="6" rx="2" fill="#3a3733"/>
-          <!-- Flame group -->
-          <g class="rocket-flame">
-            <path d="M28 44 C26 52 24 56 32 60 C40 56 38 52 36 44 Z" fill="#ff6b2b" opacity="0.9"/>
-            <path d="M30 44 C29 50 28 54 32 58 C36 54 35 50 34 44 Z" fill="#ffb347" opacity="0.85"/>
-            <path d="M31 44 C30.5 49 30 52 32 55 C34 52 33.5 49 33 44 Z" fill="#fff5e0" opacity="0.7"/>
-          </g>
-        </svg>
-      </span>
-    </div>
-  </section>
-
-  <!-- LOGO TICKER -->
-  <section class="logo-ticker-section">
-    <p class="ticker-label">Worked With</p>
-    <div style="overflow:hidden;">
-      <div class="ticker-track">
-
-        <!-- Set 1 -->
-        <div class="ticker-set">
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/200px-Coca-Cola_logo.svg.png" alt="Coca Cola" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg" alt="IKEA" style="width:70px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="matrix.PNG" alt="Matrix" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="BISB.PNG" alt="BISB" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="BIBF.PNG" alt="BIBF" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="KAZBRO.PNG" alt="Kazbro" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="AMEER.PNG" alt="Ameer" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Batelco_By_Beyon_logo.svg" alt="Batelco by Beyon" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="CIPS.png" alt="CIPS" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="NAMAL.png" alt="Namal" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="IPSOS.png" alt="Ipsos" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-        </div>
-
-        <!-- Set 2 — exact duplicate for seamless loop -->
-        <div class="ticker-set" aria-hidden="true">
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/200px-Coca-Cola_logo.svg.png" alt="Coca Cola" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg" alt="IKEA" style="width:70px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="MATRIX.PNG" alt="Matrix" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="BISB.PNG" alt="BISB" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="BIBF.PNG" alt="BIBF" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="KAZBRO.PNG" alt="Kazbro" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="AMEER.PNG" alt="Ameer" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Batelco_By_Beyon_logo.svg" alt="Batelco by Beyon" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="CIPS.png" alt="CIPS" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="NAMAL.png" alt="Namal" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-          <div class="ticker-item">
-            <span class="ticker-logo-icon"><img src="IPSOS.png" alt="Ipsos" style="width:90px;height:40px;object-fit:contain;"></span>
-          </div>
-        </div>
-
+  <!-- ============================================================
+       PAGE LOADER
+       ============================================================ -->
+  <div id="loader" role="status" aria-label="Loading">
+    <div class="loader-inner">
+      <span class="loader-logo">MK</span>
+      <div class="loader-bar-track">
+        <div class="loader-bar"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS GRID -->
-  <section class="projects" id="projects">
-    <div class="section-header">
-      <p class="section-label">PROJECTS</p>
-      <span class="section-count"></span>
-    </div>
-
-    <div class="project-grid">
-
-      <!-- 1 — large left (16:10) -->
-      <div class="proj-card">
-        <div class="proj-img-wrap">
-          <!-- TO ADD IMAGE: replace src="" with your image path, e.g. src="images/miami-cocktail.jpg" -->
-          <img src="" alt="Sa.PNG" class="proj-img">
-          <div class="proj-placeholder">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Add Image</span>
-          </div>
-        </div>
-        <div class="proj-overlay">
-          <div class="proj-overlay-name">Saudi Food 2025</div>
-          <div class="proj-overlay-tags">Event · 3D Modeling · Brand</div>
-        </div>
-        <div class="proj-info">
-          <div class="proj-title">Saudi Food 2025</div>
-          <div class="proj-meta">
-            <span class="proj-tags">Event · 3D Modeling · Brand</span>
-            <span class="proj-year">2025</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2 — tall right (3:4) -->
-      <div class="proj-card">
-        <div class="proj-img-wrap">
-          <img src="" alt="Woxer Fashion Brand" class="proj-img">
-          <div class="proj-placeholder">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Add Image</span>
-          </div>
-        </div>
-        <div class="proj-overlay">
-          <div class="proj-overlay-name">Hawa AlManama 2026</div>
-          <div class="proj-overlay-tags">Event · 3D Modeling · Brand</div>
-        </div>
-        <div class="proj-info">
-          <div class="proj-title">Hawa AlManama 2026</div>
-          <div class="proj-meta">
-            <span class="proj-tags">Event · 3D Modeling · Brand</span>
-            <span class="proj-year">2026</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3 — tall left (3:4) -->
-      <div class="proj-card">
-        <div class="proj-img-wrap">
-          <img src="" alt="Autumn's Fair 2025 Festival" class="proj-img">
-          <div class="proj-placeholder">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Add Image</span>
-          </div>
-        </div>
-        <div class="proj-overlay">
-          <div class="proj-overlay-name">Autumn's Fair 2025</div>
-          <div class="proj-overlay-tags">3D Modeling · Strategy · Brand</div>
-        </div>
-        <div class="proj-info">
-          <div class="proj-title">Autumn's Fair 2025 Festival</div>
-          <div class="proj-meta">
-            <span class="proj-tags">3D Modeling · Strategy · Brand</span>
-            <span class="proj-year">2025</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 — large right (16:9) -->
-      <div class="proj-card">
-        <div class="proj-img-wrap">
-          <img src="" alt="Autumn's Fair 2025" class="proj-img">
-          <div class="proj-placeholder">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Add Image</span>
-          </div>
-        </div>
-        <div class="proj-overlay">
-          <div class="proj-overlay-name">Autumn's Fair 2025</div>
-          <div class="proj-overlay-tags">Brand · Content · Email</div>
-        </div>
-        <div class="proj-info">
-          <div class="proj-title">Autumn's Fair 2025</div>
-          <div class="proj-meta">
-            <span class="proj-tags">Brand · Content · Email</span>
-            <span class="proj-year">2022</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5 — half width (4:3) -->
-      <div class="proj-card">
-        <div class="proj-img-wrap">
-          <img src="" alt="Display Floor Stand" class="proj-img">
-          <div class="proj-placeholder">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Add Image</span>
-          </div>
-        </div>
-        <div class="proj-overlay">
-          <div class="proj-overlay-name">Display Floor Stand</div>
-          <div class="proj-overlay-tags">3D Modeling · Strategy · POP</div>
-        </div>
-        <div class="proj-info">
-          <div class="proj-title">Display Floor Stand</div>
-          <div class="proj-meta">
-            <span class="proj-tags">3D Modeling · Strategy · POP</span>
-            <span class="proj-year">2025</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6 — half width (4:3) -->
-      <div class="proj-card">
-        <div class="proj-img-wrap">
-          <img src="" alt="Taste of the Upper West Side" class="proj-img">
-          <div class="proj-placeholder">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Add Image</span>
-          </div>
-        </div>
-        <div class="proj-overlay">
-          <div class="proj-overlay-name">Taste of the Upper West Side</div>
-          <div class="proj-overlay-tags">Brand · Email · Content</div>
-        </div>
-        <div class="proj-info">
-          <div class="proj-title">Taste of the Upper West Side</div>
-          <div class="proj-meta">
-            <span class="proj-tags">Brand · Email · Content</span>
-            <span class="proj-year">2021</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about-strip" id="about">
-    <div class="about-text">
-      <h2>Hi, I'm Mahdi K — a Marketing Specialist, brand strategist and content creator based in Bahrain.</h2>
-      <p>With over five years of experience, I blend strategic thinking with creative execution to build brands that resonate. I specialize in social media strategy, community management, influencer partnerships, and campaigns that move the needle.</p>
-      <p>Always open to new ideas and collabs — feel free to reach out if you'd like to work together.</p>
-      <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
-        <button class="btn-primary" onclick="openModal()">Get in Touch ↗</button>
-        <a href="Mahdi_K_CV.pdf" download="Mahdi_K_CV.pdf" class="btn-outline">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download CV
-        </a>
-      </div>
-    </div>
-    <img
-      src="https://raw.githubusercontent.com/imahdika/imahdika.github.io/bd072157ce23192241ca41e294e7e2dc94f02962/pfp.png.png"
-      alt="Portrait of Mahdi K"
-      class="about-portrait"
-      onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=680&h=850&fit=crop&crop=face'"
-    >
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-logo">Mahdi K</div>
-      <div class="footer-nav">
-        <div class="footer-col">
-          <h4>Pages</h4>
-          <a href="#">Home <span class="footer-arrow">↗</span></a>
-          <a href="#projects">Projects <span class="footer-arrow">↗</span></a>
-          <a href="#about">About <span class="footer-arrow">↗</span></a>
-          <a href="Mahdi_K_CV.pdf" download>CV <span class="footer-arrow">↓</span></a>
-        </div>
-        <div class="footer-col">
-          <h4>Social</h4>
-          <a href="https://www.instagram.com/imahdi.k/" target="_blank">Instagram <span class="footer-arrow">↗</span></a>
-          <a href="https://www.linkedin.com/in/mahdialmoalem/" target="_blank">LinkedIn <span class="footer-arrow">↗</span></a>
-          <a href="https://wa.me/0097336667009" target="_blank">Whatsapp <span class="footer-arrow">↗</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">©2025 Mahdi K · Bahrain</span>
-      <a href="/cdn-cgi/l/email-protection#127f737a767b797a737e7b7e202452757f737b7e3c717d7f" class="footer-email"><span class="__cf_email__" data-cfemail="ed808c85898486858c818481dfdbad8a808c8481c38e8280">[email&#160;protected]</span></a>
-    </div>
-  </footer>
-
-  <!-- CONTACT MODAL -->
-  <div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h2 class="modal-title">Let's Connect</h2>
-        <button class="modal-close" onclick="closeModal()">✕</button>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="c-name">Name</label>
-        <input type="text" id="c-name" class="form-input" placeholder="Your name">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="c-email">Email</label>
-        <input type="email" id="c-email" class="form-input" placeholder="your@email.com">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="c-msg">Message</label>
-        <textarea id="c-msg" class="form-textarea" placeholder="Tell me about your project…"></textarea>
-      </div>
-      <div class="robot-row">
-        <input type="checkbox" id="robot-check">
-        <label for="robot-check">I'm not a robot</label>
-      </div>
-      <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
     </div>
   </div>
 
-  <script>
-    const hour = new Date().getHours();
-    const greetings = ['Good night ✦', 'Good morning ☀️', 'Good afternoon 👋', 'Good evening 🌆'];
-    const idx = hour < 5 ? 0 : hour < 12 ? 1 : hour < 17 ? 2 : hour < 22 ? 3 : 0;
-    document.getElementById('greeting-text').textContent = greetings[idx];
+  <!-- ============================================================
+       CUSTOM CURSOR (desktop only, hidden via CSS on touch)
+       ============================================================ -->
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
-    function openModal() {
-      document.getElementById('modal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      document.getElementById('modal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    function handleOverlayClick(e) {
-      if (e.target === document.getElementById('modal')) closeModal();
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <header id="nav" role="banner">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Mahdi Khalil — Home">
+        Mahdi<span>K</span>
+      </a>
 
-    function handleSubmit() {
-      const name  = document.getElementById('c-name').value.trim();
-      const email = document.getElementById('c-email').value.trim();
-      const msg   = document.getElementById('c-msg').value.trim();
-      const robot = document.getElementById('robot-check').checked;
-      if (!name || !email || !msg) return alert('Please fill in all fields.');
-      if (!robot) return alert("Please verify you're not a robot.");
-      const subject = encodeURIComponent(`Portfolio Contact from ${nam
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" role="list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li>
+            <a href="#contact" class="nav-cta" aria-label="Contact Mahdi Khalil">
+              Get in Touch
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+      <ul class="mobile-nav-links" role="list">
+        <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#work" class="mobile-nav-link">Work</a></li>
+        <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+        <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        <li>
+          <a href="Mahdi_K_CV.pdf" download class="mobile-nav-link mobile-nav-cv">
+            Download CV
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section id="hero" aria-labelledby="hero-headline">
+    <!-- Animated background elements -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-grain"></div>
+    </div>
+
+    <div class="hero-content container">
+      <!-- Time-based greeting -->
+      <p class="hero-greeting eyebrow" aria-live="polite"></p>
+
+      <!-- Main headline -->
+      <h1 class="hero-headline" id="hero-headline">
+        <span class="line">Mahdi</span>
+        <span class="line"><em class="accent-word">Khalil</em></span>
+      </h1>
+
+      <!-- Professional title -->
+      <p class="hero-title">
+        Marketing Executive &amp; Brand Identity Specialist
+      </p>
+
+      <!-- Career introduction -->
+      <p class="hero-description">
+        Crafting market-defining brand identities, strategic marketing campaigns, and immersive creative experiences across the Gulf region and beyond — bridging the gap between business strategy and visual excellence.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-actions" role="group" aria-label="Primary actions">
+        <a href="#work" class="btn-primary">
+          <span>View My Work</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="Mahdi_K_CV.pdf" download class="btn-secondary" aria-label="Download Mahdi Khalil CV PDF">
+          <span>Download CV</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 3v7M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Achievement stats -->
+      <div class="hero-stats" role="list" aria-label="Career achievements">
+        <div class="hero-stat" role="listitem">
+          <span class="number" data-target="5" data-suffix="+">0</span>
+          <span class="label">Years of Experience</span>
+        </div>
+        <div class="hero-stat" role="listitem">
+          <span class="number" data-target="11" data-suffix="+">0</span>
+          <span class="label">Brands Worked With</span>
+        </div>
+        <div class="hero-stat" role="listitem">
+          <span class="number" data-target="6" data-suffix="+">0</span>
+          <span class="label">Featured Projects</span>
+        </div>
+        <div class="hero-stat" role="listitem">
+          <span class="number" data-target="3" data-suffix="+">0</span>
+          <span class="label">Countries</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <span class="scroll-label">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT / PROFESSIONAL JOURNEY SECTION
+       ============================================================ -->
+  <section id="about" class="section" aria-labelledby="about-heading">
+    <div class="container">
+
+      <div class="about-header reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section-heading" id="about-heading">
+          Where Strategy Meets<br /><em>Creative Vision</em>
+        </h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- Text column -->
+        <div class="about-text">
+          <p class="about-intro reveal">
+            I transform business challenges into compelling brand narratives that resonate, convert, and endure.
+          </p>
+          <p class="about-body reveal stagger-1">
+            With over five years of experience spanning marketing strategy, brand identity development, trade marketing, and creative direction, I have worked with some of the region's most recognized names — from global giants like Coca-Cola and IKEA to leading Gulf institutions like BISB and Batelco by Beyon.
+          </p>
+          <p class="about-body reveal stagger-2">
+            My approach unifies strategic thinking with meticulous creative execution. Whether defining a brand's visual identity from the ground up, architecting a trade marketing channel strategy, or directing a multi-touchpoint campaign — I bring both the analytical rigor of a marketing strategist and the visual sensibility of a seasoned creative director.
+          </p>
+
+          <!-- Discipline tags -->
+          <div class="about-disciplines reveal stagger-3" role="list" aria-label="Areas of expertise">
+            <span class="discipline-tag" role="listitem">Marketing Strategy</span>
+            <span class="discipline-tag" role="listitem">Brand Identity</span>
+            <span class="discipline-tag" role="listitem">Trade Marketing</span>
+            <span class="discipline-tag" role="listitem">Logo Design</span>
+            <span class="discipline-tag" role="listitem">Creative Direction</span>
+            <span class="discipline-tag" role="listitem">Campaign Development</span>
+            <span class="discipline-tag" role="listitem">Social Media</span>
+            <span class="discipline-tag" role="listitem">Content Creation</span>
+          </div>
+        </div>
+
+        <!-- Visual column -->
+        <div class="about-visual reveal-right">
+          <div class="about-profile-wrapper">
+            <img
+              src="pfp.png.png"
+              alt="Portrait of Mahdi Khalil, Marketing Executive and Brand Identity Specialist"
+              class="about-profile"
+              width="480"
+              height="600"
+              loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=480&h=600&fit=crop&crop=face'"
+            />
+            <div class="profile-accent-border" aria-hidden="true"></div>
+          </div>
+
+          <!-- Career timeline -->
+          <div class="timeline" role="list" aria-label="Career timeline">
+            <div class="timeline-item active reveal stagger-1" role="listitem">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <p class="role">Marketing Executive</p>
+                <p class="company">Senior Leadership Role</p>
+                <p class="year">Present</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal stagger-2" role="listitem">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <p class="role">Trade Marketing Specialist</p>
+                <p class="company">Gulf Region</p>
+                <p class="year">2022 — 2024</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal stagger-3" role="listitem">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <p class="role">Brand Identity Specialist</p>
+                <p class="company">Multiple Clients</p>
+                <p class="year">2020 — 2022</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal stagger-4" role="listitem">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <p class="role">Marketing Specialist &amp; Creative Designer</p>
+                <p class="company">Bahrain Market</p>
+                <p class="year">2019 — 2020</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMPANIES / EXPERIENCE SECTION
+       ============================================================ -->
+  <section id="experience" aria-labelledby="experience-heading">
+    <div class="experience-header container reveal">
+      <p class="eyebrow">Companies &amp; Clients</p>
+      <h2 class="section-heading" id="experience-heading">
+        Trusted by Recognized<br /><em>Brands &amp; Organizations</em>
+      </h2>
+    </div>
+
+    <!-- Marquee ticker -->
+    <div class="marquee-wrapper" aria-label="Companies worked with — scrolling list" role="img">
+      <div class="marquee-track" aria-hidden="true">
+        <!-- Set 1 -->
+        <div class="company-logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/320px-Coca-Cola_logo.svg.png" alt="Coca-Cola" loading="lazy" width="120" height="40" />
+        </div>
+        <div class="company-logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/IKEA_logo.svg/320px-IKEA_logo.svg.png" alt="IKEA" loading="lazy" width="80" height="40" />
+        </div>
+        <div class="company-logo-item">
+          <img src="matrix.PNG" alt="Matrix" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">Matrix</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="BISB.PNG" alt="Bank of Bahrain — BISB" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">BISB</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="BIBF.PNG" alt="Bahrain Institute of Banking and Finance — BIBF" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">BIBF</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="KAZBRO.PNG" alt="Kazbro" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">Kazbro</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="AMEER.PNG" alt="Ameer" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">Ameer</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Batelco_logo.svg/320px-Batelco_logo.svg.png" alt="Batelco by Beyon" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">Batelco by Beyon</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="CIPS.png" alt="CIPS" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">CIPS</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="NAMAL.png" alt="Namal" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">Namal</span>
+        </div>
+        <div class="company-logo-item">
+          <img src="IPSOS.png" alt="Ipsos" loading="lazy" width="120" height="40" onerror="this.parentNode.querySelector('.logo-text-fallback').style.display='block';this.style.display='none'" />
+          <span class="logo-text-fallback company-name-text" style="display:none">Ipsos</span>
+        </div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/320px-Coca-Cola_logo.svg.png" alt="" loading="lazy" width="120" height="40" />
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/IKEA_logo.svg/320px-IKEA_logo.svg.png" alt="" loading="lazy" width="80" height="40" />
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="matrix.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">Matrix</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="BISB.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">BISB</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="BIBF.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">BIBF</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="KAZBRO.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">Kazbro</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="AMEER.PNG" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">Ameer</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Batelco_logo.svg/320px-Batelco_logo.svg.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">Batelco by Beyon</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="CIPS.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">CIPS</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="NAMAL.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">Namal</span>
+        </div>
+        <div class="company-logo-item" aria-hidden="true">
+          <img src="IPSOS.png" alt="" loading="lazy" width="120" height="40" onerror="this.style.display='none'" />
+          <span class="company-name-text" style="display:none">Ipsos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO / WORK SECTION
+       ============================================================ -->
+  <section id="work" class="section" aria-labelledby="work-heading">
+    <div class="container">
+      <div class="work-header">
+        <div class="reveal">
+          <p class="eyebrow">Portfolio</p>
+          <h2 class="section-heading" id="work-heading">
+            Selected<br /><em>Work</em>
+          </h2>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Filter projects by category">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="brand" role="tab" aria-selected="false">Branding</button>
+          <button class="filter-tab" data-filter="event" role="tab" aria-selected="false">Events</button>
+          <button class="filter-tab" data-filter="strategy" role="tab" aria-selected="false">Strategy</button>
+          <button class="filter-tab" data-filter="3d" role="tab" aria-selected="false">3D Design</button>
+          <button class="filter-tab" data-filter="content" role="tab" aria-selected="false">Content</button>
+        </div>
+      </div>
+
+      <!-- Projects grid -->
+      <div class="projects-grid" id="projects-grid">
+
+        <!-- Project 1: Saudi Food 2025 -->
+        <article
+          class="project-card"
+          data-category="event brand 3d"
+          data-title="Saudi Food 2025"
+          data-year="2025"
+          data-type="Event Branding / 3D Visualization"
+          data-description="A comprehensive event branding project for Saudi Food 2025 — encompassing full 3D visualization, booth design, brand application, and marketing materials. Developed to present a cohesive and impactful brand experience at one of the region's premier food industry events."
+          data-tags="Event Design, 3D Modeling, Brand Identity, Trade Marketing"
+          data-images='["https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop"]'
+          role="article"
+          tabindex="0"
+          aria-label="View Saudi Food 2025 project"
+        >
+          <div class="project-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop"
+              alt="Saudi Food 2025 event branding and 3D visualization"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+            <div class="project-card-overlay">
+              <span class="project-card-hover-cta">View Project</span>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <p class="project-card-category label">Event / Branding / 3D</p>
+            <h3 class="project-card-title">Saudi Food 2025</h3>
+            <div class="project-card-tags" aria-label="Project tags">
+              <span class="project-tag">Event Design</span>
+              <span class="project-tag">3D Modeling</span>
+              <span class="project-tag">Brand Identity</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Hawa AlManama 2026 -->
+        <article
+          class="project-card"
+          data-category="event brand 3d"
+          data-title="Hawa AlManama 2026"
+          data-year="2026"
+          data-type="Event Branding / 3D Visualization"
+          data-description="Hawa AlManama 2026 — a landmark cultural and lifestyle event in Bahrain's capital. Full brand identity development, 3D venue visualization, event collateral, and marketing campaign materials created to position the event as a premium destination experience."
+          data-tags="Event Design, 3D Modeling, Brand Identity, Marketing"
+          data-images='["https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"]'
+          role="article"
+          tabindex="0"
+          aria-label="View Hawa AlManama 2026 project"
+        >
+          <div class="project-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop"
+              alt="Hawa AlManama 2026 event branding"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+            <div class="project-card-overlay">
+              <span class="project-card-hover-cta">View Project</span>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <p class="project-card-category label">Event / Branding / 3D</p>
+            <h3 class="project-card-title">Hawa AlManama 2026</h3>
+            <div class="project-card-tags" aria-label="Project tags">
+              <span class="project-tag">Event Design</span>
+              <span class="project-tag">3D Modeling</span>
+              <span class="project-tag">Brand Strategy</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Autumn's Fair 2025 Festival -->
+        <article
+          class="project-card"
+          data-category="brand strategy 3d"
+          data-title="Autumn's Fair 2025 Festival"
+          data-year="2025"
+          data-type="Brand Identity / Strategy / 3D"
+          data-description="End-to-end brand identity and strategic communications for Autumn's Fair 2025 Festival. The project encompassed brand architecture, visual identity system, 3D experiential elements, and an integrated marketing strategy to maximize festival attendance and engagement."
+          data-tags="Brand Identity, Strategy, 3D Visualization, Festival Design"
+          data-images='["https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&h=600&fit=crop"]'
+          role="article"
+          tabindex="0"
+          aria-label="View Autumn's Fair 2025 Festival project"
+        >
+          <div class="project-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800&h=600&fit=crop"
+              alt="Autumn's Fair 2025 Festival brand identity"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+            <div class="project-card-overlay">
+              <span class="project-card-hover-cta">View Project</span>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <p class="project-card-category label">Branding / Strategy / 3D</p>
+            <h3 class="project-card-title">Autumn's Fair 2025 Festival</h3>
+            <div class="project-card-tags" aria-label="Project tags">
+              <span class="project-tag">Brand Identity</span>
+              <span class="project-tag">Strategy</span>
+              <span class="project-tag">3D Design</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Autumn's Fair 2025 -->
+        <article
+          class="project-card"
+          data-category="brand content"
+          data-title="Autumn's Fair 2025"
+          data-year="2022"
+          data-type="Brand / Content / Email Marketing"
+          data-description="Integrated brand communications and content strategy for Autumn's Fair 2025 — including email marketing campaigns, social media content, brand voice development, and audience engagement strategy. Delivered measurable uplift in event awareness and advance ticket registrations."
+          data-tags="Brand Communications, Content Strategy, Email Marketing, Social Media"
+          data-images='["https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1423345440790-e9e0cc31c2a8?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=600&fit=crop"]'
+          role="article"
+          tabindex="0"
+          aria-label="View Autumn's Fair 2025 project"
+        >
+          <div class="project-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=800&h=600&fit=crop"
+              alt="Autumn's Fair 2025 brand content campaign"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+            <div class="project-card-overlay">
+              <span class="project-card-hover-cta">View Project</span>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <p class="project-card-category label">Brand / Content / Email</p>
+            <h3 class="project-card-title">Autumn's Fair 2025</h3>
+            <div class="project-card-tags" aria-label="Project tags">
+              <span class="project-tag">Brand</span>
+              <span class="project-tag">Content</span>
+              <span class="project-tag">Email Marketing</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5: Display Floor Stand -->
+        <article
+          class="project-card"
+          data-category="strategy 3d"
+          data-title="Display Floor Stand"
+          data-year="2025"
+          data-type="Trade Marketing / 3D Design / POP"
+          data-description="Point-of-purchase (POP) display floor stand design for a trade marketing initiative — from strategic retail placement concept through to fully detailed 3D visualization and production-ready specifications. Designed to maximize product visibility and drive in-store purchase intent."
+          data-tags="Trade Marketing, 3D Design, POP Display, Retail Strategy"
+          data-images='["https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop"]'
+          role="article"
+          tabindex="0"
+          aria-label="View Display Floor Stand project"
+        >
+          <div class="project-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop"
+              alt="Display floor stand trade marketing 3D design"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+            <div class="project-card-overlay">
+              <span class="project-card-hover-cta">View Project</span>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <p class="project-card-category label">Trade Marketing / 3D / POP</p>
+            <h3 class="project-card-title">Display Floor Stand</h3>
+            <div class="project-card-tags" aria-label="Project tags">
+              <span class="project-tag">Trade Marketing</span>
+              <span class="project-tag">3D Design</span>
+              <span class="project-tag">POP</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6: Taste of the Upper West Side -->
+        <article
+          class="project-card"
+          data-category="brand content"
+          data-title="Taste of the Upper West Side"
+          data-year="2021"
+          data-type="Brand / Email Marketing / Content"
+          data-description="Brand communications and content strategy for Taste of the Upper West Side — a premium culinary event. Developed comprehensive email marketing campaigns, brand storytelling assets, and a content roadmap that drove audience engagement and positioned the event as a must-attend dining experience."
+          data-tags="Brand Identity, Email Marketing, Content Strategy, Event Promotion"
+          data-images='["https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=600&fit=crop","https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=600&fit=crop"]'
+          role="article"
+          tabindex="0"
+          aria-label="View Taste of the Upper West Side project"
+        >
+          <div class="project-card-media">
+            <img
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop"
+              alt="Taste of the Upper West Side brand and content campaign"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+            <div class="project-card-overlay">
+              <span class="project-card-hover-cta">View Project</span>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <p class="project-card-category label">Brand / Email / Content</p>
+            <h3 class="project-card-title">Taste of the Upper West Side</h3>
+            <div class="project-card-tags" aria-label="Project tags">
+              <span class="project-tag">Brand</span>
+              <span class="project-tag">Email Marketing</span>
+              <span class="project-tag">Content</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /projects-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECT LIGHTBOX MODAL
+       ============================================================ -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title-el" aria-hidden="true">
+    <div class="lightbox-panel" id="lightbox-panel">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close project">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Carousel -->
+      <div class="lightbox-carousel">
+        <div class="lightbox-slides" id="lightbox-slides"></div>
+
+        <!-- Nav arrows -->
+        <div class="carousel-nav" aria-label="Image navigation">
+          <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Previous image">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 14L6 9l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Next image">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Dots -->
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Image position"></div>
+      </div>
+
+      <!-- Project details -->
+      <div class="lightbox-body">
+        <p class="lightbox-category label" id="lightbox-category-el"></p>
+        <h2 class="lightbox-title" id="lightbox-title-el"></h2>
+        <p class="lightbox-description" id="lightbox-description-el"></p>
+        <div class="lightbox-meta">
+          <div class="meta-item">
+            <p class="meta-label label">Year</p>
+            <p class="meta-value" id="lightbox-year-el"></p>
+          </div>
+          <div class="meta-item">
+            <p class="meta-label label">Type</p>
+            <p class="meta-value" id="lightbox-type-el"></p>
+          </div>
+          <div class="meta-item">
+            <p class="meta-label label">Tags</p>
+            <div class="meta-tags" id="lightbox-tags-el"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SKILLS SECTION
+       ============================================================ -->
+  <section id="skills" class="section" aria-labelledby="skills-heading">
+    <div class="container">
+
+      <div class="about-header reveal">
+        <p class="eyebrow">Expertise</p>
+        <h2 class="section-heading" id="skills-heading">
+          Skills &amp;<br /><em>Capabilities</em>
+        </h2>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Marketing & Strategy Skills -->
+        <div class="skills-group reveal">
+          <h3 class="skills-group-title">Marketing &amp; Strategy</h3>
+          <div class="skill-item stagger-1">
+            <div class="skill-header">
+              <span class="skill-name">Marketing Strategy</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Marketing Strategy: Expert">
+              <div class="skill-fill" data-width="92%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-2">
+            <div class="skill-header">
+              <span class="skill-name">Trade Marketing</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Trade Marketing: Expert">
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-3">
+            <div class="skill-header">
+              <span class="skill-name">Brand Strategy</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Brand Strategy: Expert">
+              <div class="skill-fill" data-width="88%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-4">
+            <div class="skill-header">
+              <span class="skill-name">Campaign Development</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Campaign Development: Advanced">
+              <div class="skill-fill" data-width="85%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-5">
+            <div class="skill-header">
+              <span class="skill-name">Social Media Management</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Social Media Management: Advanced">
+              <div class="skill-fill" data-width="82%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-6">
+            <div class="skill-header">
+              <span class="skill-name">Email Marketing</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Email Marketing: Advanced">
+              <div class="skill-fill" data-width="80%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Creative & Design Skills -->
+        <div class="skills-group reveal stagger-2">
+          <h3 class="skills-group-title">Creative &amp; Design</h3>
+          <div class="skill-item stagger-1">
+            <div class="skill-header">
+              <span class="skill-name">Brand Identity Design</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" aria-label="Brand Identity Design: Expert">
+              <div class="skill-fill" data-width="94%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-2">
+            <div class="skill-header">
+              <span class="skill-name">Logo Design</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Logo Design: Expert">
+              <div class="skill-fill" data-width="92%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-3">
+            <div class="skill-header">
+              <span class="skill-name">Creative Direction</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Creative Direction: Expert">
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-4">
+            <div class="skill-header">
+              <span class="skill-name">Graphic Design</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Graphic Design: Expert">
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-5">
+            <div class="skill-header">
+              <span class="skill-name">Content Creation</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Content Creation: Advanced">
+              <div class="skill-fill" data-width="85%"></div>
+            </div>
+          </div>
+          <div class="skill-item stagger-6">
+            <div class="skill-header">
+              <span class="skill-name">3D Modeling &amp; Visualization</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="3D Modeling and Visualization: Proficient">
+              <div class="skill-fill" data-width="70%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional competencies -->
+        <div class="skills-tags-section reveal">
+          <p class="skills-tags-title label">Additional Competencies</p>
+          <div class="skills-tags" role="list" aria-label="Additional skills">
+            <span class="skill-tag" role="listitem">Community Management</span>
+            <span class="skill-tag" role="listitem">Influencer Partnerships</span>
+            <span class="skill-tag" role="listitem">Event Planning</span>
+            <span class="skill-tag" role="listitem">Market Research</span>
+            <span class="skill-tag" role="listitem">Consumer Insights</span>
+            <span class="skill-tag" role="listitem">POP / Retail Design</span>
+            <span class="skill-tag" role="listitem">Brand Activation</span>
+            <span class="skill-tag" role="listitem">Visual Storytelling</span>
+            <span class="skill-tag" role="listitem">Typography</span>
+            <span class="skill-tag" role="listitem">Color Theory</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+       ============================================================ -->
+  <section id="contact" class="section" aria-labelledby="contact-heading">
+    <!-- Background decorative text -->
+    <div class="contact-bg-text" aria-hidden="true">Contact</div>
+
+    <div class="contact-inner container">
+      <div class="contact-header reveal">
+        <p class="eyebrow">Get in Touch</p>
+        <h2 class="section-heading contact-headline" id="contact-heading">
+          Let's Build Something<br /><em>Remarkable Together</em>
+        </h2>
+        <p class="subheadline">
+          Available for marketing leadership roles, brand identity projects, creative collaborations, and consulting engagements across the Gulf region and internationally.
+        </p>
+      </div>
+
+      <!-- Direct contact channels -->
+      <div class="contact-channels reveal">
+        <a
+          href="mailto:info@mahdi.bh"
+          class="contact-channel"
+          aria-label="Send email to info@mahdi.bh"
+        >
+          <div class="channel-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2.5 5.5l7.5 5 7.5-5M2.5 5.5h15v10h-15V5.5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="channel-label label">Email</p>
+          <p class="channel-value">info@mahdi.bh</p>
+        </a>
+
+        <a
+          href="https://wa.me/0097336667009"
+          class="contact-channel"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp — +973 3666 7009"
+        >
+          <div class="channel-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2a8 8 0 0 1 6.93 12.02L18 18l-4.07-1.06A8 8 0 1 1 10 2z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7.5 8.5c.5 1 1.5 2.5 3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="channel-label label">WhatsApp</p>
+          <p class="channel-value">+973 3666 7009</p>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/mahdialmoalem/"
+          class="contact-channel"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View LinkedIn profile"
+        >
+          <div class="channel-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 7h3v10H3V7zM4.5 5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM9 7h2.8v1.4h.04C12.38 7.6 13.56 7 15 7c3.2 0 3.8 2.1 3.8 4.84V17H16v-4.6c0-1.1 0-2.5-1.53-2.5S12.6 11.3 12.6 12.3V17H9.8V7z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="channel-label label">LinkedIn</p>
+          <p class="channel-value">/in/mahdialmoalem</p>
+        </a>
+      </div>
+
+      <!-- Contact form + aside -->
+      <div class="contact-form-wrapper">
+        <form
+          id="contact-form"
+          class="contact-form reveal"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          novalidate
+          aria-label="Contact form"
+        >
+          <div class="form-group">
+            <label class="form-label" for="form-name">Full Name</label>
+            <input
+              class="form-input"
+              type="text"
+              id="form-name"
+              name="name"
+              placeholder="Your full name"
+              autocomplete="name"
+              required
+              aria-required="true"
+              aria-describedby="name-error"
+            />
+            <span class="form-error-msg" id="name-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-email">Email Address</label>
+            <input
+              class="form-input"
+              type="email"
+              id="form-email"
+              name="email"
+              placeholder="your@email.com"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="email-error"
+            />
+            <span class="form-error-msg" id="email-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-subject">Subject</label>
+            <input
+              class="form-input"
+              type="text"
+              id="form-subject"
+              name="subject"
+              placeholder="How can I help you?"
+              required
+              aria-required="true"
+              aria-describedby="subject-error"
+            />
+            <span class="form-error-msg" id="subject-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-message">Message</label>
+            <textarea
+              class="form-textarea"
+              id="form-message"
+              name="message"
+              placeholder="Tell me about your project, role, or collaboration idea..."
+              rows="5"
+              required
+              aria-required="true"
+              aria-describedby="message-error"
+            ></textarea>
+            <span class="form-error-msg" id="message-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <button type="submit" class="btn-primary form-submit" id="form-submit">
+            <span id="form-submit-text">Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 8h10.5M9 4.5l3.5 3.5L9 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="form-success" id="form-success" aria-live="polite" role="status">
+            Your message has been sent. Thank you — I will be in touch shortly.
+          </div>
+        </form>
+
+        <!-- Contact aside -->
+        <div class="contact-info-aside reveal stagger-2">
+          <div class="aside-item">
+            <p class="aside-label label">Location</p>
+            <p class="aside-value">Bahrain, Gulf Region</p>
+          </div>
+          <div class="aside-item">
+            <p class="aside-label label">Phone</p>
+            <a href="tel:+97336667009" class="aside-value aside-link">+973 3666 7009</a>
+          </div>
+          <div class="aside-item">
+            <p class="aside-label label">Instagram</p>
+            <a
+              href="https://www.instagram.com/imahdi.k/"
+              class="aside-value aside-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >@imahdi.k</a>
+          </div>
+          <div class="aside-item">
+            <p class="aside-label label">Resume</p>
+            <a href="Mahdi_K_CV.pdf" download class="aside-value aside-link">
+              Download CV (PDF)
+            </a>
+          </div>
+          <div class="aside-availability">
+            <div class="availability-dot" aria-hidden="true"></div>
+            <p class="aside-value">Available for new opportunities</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-inner container">
+      <p class="footer-copy">
+        &copy; 2025 Mahdi Khalil. All rights reserved. Bahrain.
+      </p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:info@mahdi.bh" class="footer-link">Email</a>
+        <a href="https://www.linkedin.com/in/mahdialmoalem/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.instagram.com/imahdi.k/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="Mahdi_K_CV.pdf" download class="footer-link">CV</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+
+  <!-- GSAP Core + Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d+ByiRbhDYr0+JE0Bvbm2Sgg0pPVBHmPHe/bDPsxvbFuZiSe94RZm1P+A5+RnuUOsM5HKzZsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOCC5sSeJjcM/0TKvMXZJEa0klQ1n4qFnwx8n5ub9bRYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" integrity="sha512-1PKqXBz2ju2JcAerHKL8dNPSExh4OA3s7M7NMjFjWTFEBpEfZRe/SX/NTqeFRrN0x5RBFxHBJ8PdgFIy3wXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
