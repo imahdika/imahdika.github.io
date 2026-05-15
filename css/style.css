@@ -903,12 +903,19 @@ body.nav-open .hamburger-bar:nth-child(2) {
 .hero-scroll-indicator {
   position: absolute;
   bottom: var(--sp-6);
-  right: var(--sp-10);
+  right: var(--sp-8);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--sp-1);
   color: var(--color-text-muted);
+}
+
+/* Hide scroll indicator on narrow viewports to avoid text overlap */
+@media (max-width: 900px) {
+  .hero-scroll-indicator {
+    display: none;
+  }
 }
 
 .scroll-label {
