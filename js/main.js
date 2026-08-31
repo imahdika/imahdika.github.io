@@ -142,6 +142,58 @@
     });
   }
 
+  /* ---------------- Lightbox (zoomed / unzoomed project photos) ---------------- */
+  function initLightbox() {
+    const triggers = document.querySelectorAll('.work-media[data-full]');
+    if (!triggers.length) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.innerHTML =
+      '<button class="lightbox-close" aria-label="Close">' +
+      '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' +
+      '</button>' +
+      '<img class="lightbox-img" src="" alt="" />';
+    document.body.appendChild(overlay);
+
+    const img = overlay.querySelector('.lightbox-img');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+    let lastFocused = null;
+
+    function open(src, alt) {
+      img.src = src;
+      img.alt = alt || '';
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      lastFocused = document.activeElement;
+      closeBtn.focus();
+    }
+    function close() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+    });
+
+    triggers.forEach((media) => {
+      media.addEventListener('click', () => {
+        if (!media.classList.contains('has-photo')) return;
+        const full = media.dataset.full;
+        const alt = media.querySelector('.work-media-photo')?.alt || '';
+        open(full, alt);
+      });
+    });
+  }
+
   /* ---------------- Footer year ---------------- */
   function initYear() {
     const el = document.getElementById('year');
@@ -153,6 +205,7 @@
     initReveal();
     initTimeline();
     initWorkFilters();
+    initLightbox();
     initContactForm();
     initYear();
   });
