@@ -744,6 +744,28 @@ h2.section-title {
   background: linear-gradient(135deg, var(--card-tint, var(--mint-light)) 0%, var(--off-white) 100%);
   overflow: hidden;
 }
+.work-media.has-zoom.has-photo { cursor: zoom-in; }
+.zoom-hint {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-2);
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black-soft);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+  pointer-events: none;
+}
+.work-card:hover .zoom-hint { opacity: 1; transform: translateY(0); }
 .work-media-photo {
   position: absolute;
   inset: 0;
@@ -1187,4 +1209,57 @@ h2.section-title {
 @media (max-width: 480px) {
   .contact-panel { padding: var(--sp-6) var(--sp-3); }
   .flow-grid, .hero-stats-panel { border-radius: 20px; }
+}
+
+/* ----------------------------------------------------------------------
+   18. LIGHTBOX (zoomed / unzoomed project photos)
+   ---------------------------------------------------------------------- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(17, 17, 17, 0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6) var(--sp-4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms var(--ease);
+}
+.lightbox-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-img {
+  max-width: 94vw;
+  max-height: 88vh;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease);
+}
+.lightbox-overlay.is-open .lightbox-img {
+  opacity: 1;
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast), transform var(--dur-fast);
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: rotate(90deg);
 }
